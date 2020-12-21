@@ -1,0 +1,1 @@
+import{p as r,b as e}from"./p-8def284e.js";(()=>{const e=import.meta.url,o={};return""!==e&&(o.resourcesUrl=new URL(".",e).href),r(o)})().then((r=>e([],r)));
