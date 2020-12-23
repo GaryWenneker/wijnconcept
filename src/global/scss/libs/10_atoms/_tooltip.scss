@@ -1,0 +1,26 @@
+.a-tooltip {
+  width: 28px;
+  cursor: pointer;
+
+  &__balloon-content {
+    max-width: 100%;
+        
+    @include mq('S') {
+      max-width: 250px; 
+    }
+  }
+
+  [class*='a-icon__'] {
+    margin-right: 5px;
+    margin-left: 5px;
+  }  
+
+  .react-tooltip-lite {
+    background: #fc0;
+    color: #333;
+    
+    &-arrow {
+      border-color: #fc0;
+    }
+  }
+}

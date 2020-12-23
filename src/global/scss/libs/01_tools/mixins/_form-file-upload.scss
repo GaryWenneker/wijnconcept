@@ -1,0 +1,31 @@
+// File upload
+@mixin file-upload-button-styles {
+  .o-sitecore-file-upload-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin-bottom: map-get($spacings, 1);
+    padding-top: map-get($spacings, 1);
+
+    &--filename {
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: map-get($spacings, 2);
+      color: $color-text;
+    }
+
+    [type='file'] {
+      position: absolute;
+      z-index: -1;
+      overflow: hidden;
+      width: .1px;
+      height: .1px;
+      opacity: 1;
+    }
+
+    .field-validation-error {
+      position: absolute;
+      margin-top: map-get($spacings, 4) + map-get($spacings, 1);
+    }
+  }
+}

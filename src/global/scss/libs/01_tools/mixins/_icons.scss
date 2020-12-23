@@ -1,0 +1,143 @@
+@font-face {
+  font-family: 'a-icons';
+  src: url('/static/fonts/onvz/a-icons.woff2?0595fc57a5c5b33b4c8794e45ff67910') format('woff2'),
+    url('/static/fonts/onvz/a-icons.woff?0595fc57a5c5b33b4c8794e45ff67910') format('woff');
+}
+  
+$webfont-icons: (
+  '22-content-ab': '\f101',
+  '22-content-apple': '\f102',
+  '22-content-calculator': '\f103',
+  '22-content-chat': '\f104',
+  '22-content-document': '\f105',
+  '22-content-download': '\f106',
+  '22-content-email': '\f107',
+  '22-content-eye': '\f108',
+  '22-content-filter': '\f109',
+  '22-content-flower': '\f10a',
+  '22-content-globe': '\f10b',
+  '22-content-info filled': '\f10c',
+  '22-content-info': '\f10d',
+  '22-content-keuzevrijheid': '\f10e',
+  '22-content-link': '\f10f',
+  '22-content-loupe detail': '\f110',
+  '22-content-loupe text': '\f111',
+  '22-content-person add': '\f112',
+  '22-content-person': '\f113',
+  '22-content-phone': '\f114',
+  '22-content-social-facebook': '\f115',
+  '22-content-social-twitter': '\f116',
+  '22-content-star': '\f117',
+  '22-content-tooth': '\f118',
+  '22-social-email': '\f119',
+  '22-social-facebook': '\f11a',
+  '22-social-googleplus': '\f11b',
+  '22-social-instagram': '\f11c',
+  '22-social-linkedin': '\f11d',
+  '22-social-pinterest': '\f11e',
+  '22-social-tumblr': '\f11f',
+  '22-social-twitter': '\f120',
+  '22-social-vimeo': '\f121',
+  '22-social-whatsapp': '\f122',
+  '22-social-youtube': '\f123',
+  '22-system-account': '\f124',
+  '22-system-calculate': '\f125',
+  '22-system-checkmark-no': '\f126',
+  '22-system-checkmark-yes': '\f127',
+  '22-system-chevron-back': '\f128',
+  '22-system-chevron-down': '\f129',
+  '22-system-chevron-forward': '\f12a',
+  '22-system-chevron-up': '\f12b',
+  '22-system-choose': '\f12c',
+  '22-system-circled-plus': '\f12d',
+  '22-system-close': '\f12e',
+  '22-system-compare': '\f12f',
+  '22-system-lock': '\f130',
+  '22-system-menu': '\f131',
+  '22-system-minus': '\f132',
+  '22-system-password-hide': '\f133',
+  '22-system-password-show': '\f134',
+  '22-system-people': '\f135',
+  '22-system-phone': '\f136',
+  '22-system-plus': '\f137',
+  '22-system-rating': '\f138',
+  '22-system-search-reverse': '\f139',
+  '22-system-search': '\f13a',
+  '22-video-play': '\f13b',
+  '33-content-ab': '\f13c',
+  '33-content-alert-triangle': '\f13d',
+  '33-content-apple': '\f13e',
+  '33-content-calculator': '\f13f',
+  '33-content-chat': '\f140',
+  '33-content-checkmark': '\f141',
+  '33-content-delen-nee': '\f142',
+  '33-content-delen-oke': '\f143',
+  '33-content-document': '\f144',
+  '33-content-download': '\f145',
+  '33-content-email': '\f146',
+  '33-content-eye-cancel': '\f147',
+  '33-content-eye': '\f148',
+  '33-content-flower': '\f149',
+  '33-content-globe': '\f14a',
+  '33-content-info-filled': '\f14b',
+  '33-content-info': '\f14c',
+  '33-content-link': '\f14d',
+  '33-content-loupe-detail': '\f14e',
+  '33-content-loupe-text': '\f14f',
+  '33-content-person add': '\f150',
+  '33-content-person': '\f151',
+  '33-content-phone': '\f152',
+  '33-content-rating': '\f153',
+  '33-content-social-facebook': '\f154',
+  '33-content-social-twitter': '\f155',
+  '33-content-tooth': '\f156',
+  '33-system-chevron-back': '\f157',
+  '33-system-chevron-down': '\f158',
+  '33-system-chevron-forward': '\f159',
+  '33-system-chevron-up': '\f15a',
+  '33-system-close': '\f15b',
+  '33-system-search-reverse': '\f15c',
+  'placeholder': '\f15d',
+);
+  
+@mixin icon-font {
+  font-family: 'a-icons';
+}
+  
+@mixin webfont-icon-common-definition {
+  display: inline-block;
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'a-icons';
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+  
+@mixin webfont-icon($name) {
+  $icon: map-get($webfont-icons, $name);
+  
+  @if map-has-key($webfont-fn-icons, $name) {
+    $icon: map-get($webfont-icons, map-get($webfont-fn-icons, $name));
+  }
+  
+  &::before {
+    @include webfont-icon-common-definition;
+    content: $icon;
+    vertical-align: middle;
+  }
+}
+  
+@mixin webfont-icon-after($name) {
+  $icon: map-get($webfont-icons, $name);
+  
+  @if map-has-key($webfont-fn-icons, $name) {
+    $icon: map-get($webfont-icons, map-get($webfont-fn-icons, $name));
+  }
+  
+  &::after {
+    @include webfont-icon-common-definition;
+    content: $icon;
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,380 @@
+/* 
+
+  oud spul, kan interessant zijn als Navigation component gebruikt gaat worden
+
+*/
+/* stylelint-disable */
+$m-navigation-dropdown-background-color: #403e3b !default;
+$m-navigation-dropdown-background-color-fixed: #403e3b !default;
+$m-navigation-color: #403e3b !default;
+$m-navigation-color-fixed: #403e3b !default;
+$m-navigation-color--active: #403e3b !default;
+$m-navigation-color--active-fixed: #403e3b !default;
+
+[class*='navigation-item-wrapper-level'] {
+  font-size: $base-fontsize;
+}
+
+.m-navigation-menu {
+  position: relative;
+  z-index: map-get($z-index, 'navigation');
+  min-height: 85px;
+  color: #fff;
+  pointer-events: none;
+
+  @include mq('M') {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    display: inline-block;
+    vertical-align: top;
+    min-height: rem(32px);
+    margin-top: map-get($spacings, 3);
+    margin-bottom: map-get($spacings, 3);
+  }
+
+  @keyframes navigation-list-slide {
+    0% {
+      max-height: 0;
+      opacity: 0;
+      visibility: collapse;
+    }
+    50% { opacity: 1; }
+    99% { visibility: visible; }
+  }
+
+  @keyframes navigation-list-popup {
+    0% { transform: scaleY(0); }
+    50% { transform: scaleY(0); }
+  }
+
+  @keyframes navigation-list-item-slide {
+    0% {
+      overflow: hidden;
+      max-height: 0;
+    }
+    99% { overflow: visible; }
+  }
+
+  .m-navigation-menu__button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: block;
+    width: 20px;
+    pointer-events: auto;
+    transform: translateY(-50%);
+
+    @include mq('M') {
+      display: none;
+    }
+
+    .a-icon {
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      font-size: 20px;
+      transition: color .3s ease;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .m-navigation-list-level1.is-open {
+    overflow: auto;
+    overflow-y: scroll;
+    visibility: visible;
+    animation: navigation-list-slide .24s ease-in;
+
+    &::after {
+      transform-origin: center bottom;
+      animation: navigation-list-popup .3s;
+    }
+  }
+
+  .m-navigation-list-level1 {
+    position: fixed;
+    top: 85px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 10000px;
+    padding-top: map-get($spacings, 1);
+    padding-right: map-get($spacings, 3);
+    padding-bottom: map-get($spacings, 1);
+    padding-left: map-get($spacings, 3);
+    background-color: #fff;
+    visibility: collapse;
+    pointer-events: auto;
+
+    @include mq('M') {
+      @include fallback-with-fixed-color(color, $m-navigation-color, $m-navigation-color-fixed);
+      position: relative;
+      top: 0;
+      margin-top: 0;
+      padding: 0;
+      background-color: transparent;
+      text-align: left;
+      visibility: visible;
+    }
+
+    .m-navigation-item-level1 {
+      @include h-transition-button;
+      @include fallback-with-fixed-color(color, $m-navigation-color, $m-navigation-color-fixed);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1px;
+      padding-top: 4px;
+      padding-right: 12.5px;
+      padding-bottom: 4px;
+      padding-left: 0;
+      border-radius: 4px;
+      font-family: $header-font;
+      line-height: 24px;
+      cursor: pointer;
+
+      @include mq('M') {
+        display: flex;
+        margin: 0;
+        padding-bottom: 2px;
+        padding-left: 12.5px;
+        line-height: 1.5;
+
+        span {
+          border-bottom: 2px solid transparent;
+        }
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .m-navigation-item-wrapper-level1 {
+    position: relative;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+    @include mq('M') {
+      display: inline-block;
+      vertical-align: top;
+      padding-top: 0;
+      padding-bottom: 0;
+      text-align: left;
+
+      &:hover {
+        .m-navigation-item-level1 {
+          span {
+            @include fallback-with-fixed-color(border-color, $m-navigation-color--active, $m-navigation-color--active-fixed);
+            border-bottom: 2px solid transparent;
+            text-decoration: none;
+          }
+        }
+
+        .m-navigation-list-level2 {
+          top: calc(100% + 7px);
+          z-index: 1;
+          opacity: 1;
+          pointer-events: inherit;
+          transition: top .2s ease .2s, opacity .3s ease-out .22s;
+        }
+      }
+    }
+
+    &--active {
+      .m-navigation-item-level1 {
+        @include fallback-with-fixed-color(color, $m-navigation-color--active, $m-navigation-color--active-fixed);
+      }
+
+      &:hover .m-navigation-item-level1 span {
+        @include fallback-with-fixed-color(border-color, $m-navigation-color--active !important, $m-navigation-color--active-fixed !important); // sass-lint:disable-line no-important
+      }
+    }
+  }
+
+  .m-navigation-list-level2.is-expanded {
+    max-height: 10000px;
+    transform-origin: center top;
+    animation: navigation-list-item-slide 3s;
+  }
+
+  .m-navigation-list-level2 {
+    position: relative;
+    overflow: hidden;
+    max-height: 0;
+
+    @include mq('M') {
+      @include fallback-with-fixed-color(background-color, $m-navigation-dropdown-background-color, $m-navigation-dropdown-background-color-fixed);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: inline-block;
+      overflow: visible;
+      min-width: 200px;
+      max-height: 10000px;
+      padding: 14px 30px 20px;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%);
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -8px;
+        right: 0;
+        left: 0;
+        display: block;
+        height: 8px;
+      }
+
+      &::before {
+        @include fallback-with-fixed-color(border-bottom-color, $m-navigation-dropdown-background-color, $m-navigation-dropdown-background-color-fixed);
+        content: '';
+        position: absolute;
+        top: -7px;
+        left: calc(50% - 10px);
+        display: block;
+        border-right: 10px solid transparent;
+        border-bottom: 8.9px solid transparent;
+        border-left: 10px solid transparent;
+      }
+    }
+  }
+
+  .m-navigation-item-expander:active {
+    text-shadow: 0 0 3px #fff;
+  }
+
+  .m-navigation-item-expander.is-expanded {
+    &::before {
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    &::after {
+      opacity: 0;
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+
+  .m-navigation-item-expander {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    padding-left: 20px;
+    cursor: pointer;
+
+    @include mq('M') {
+      display: none;
+    }
+
+    &::before {
+      @include fallback-with-fixed-color(background-color, #403e3b, #403e3b);
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 6px;
+      width: 2px;
+      height: 14px;
+      opacity: 1;
+      transition: transform .3s ease, left .3s ease, top .3s ease;
+      transform: translateY(-50%);
+      transform-origin: center;
+    }
+
+    &::after {
+      @include fallback-with-fixed-color(background-color, #403e3b, #403e3b);
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 14px;
+      height: 2px;
+      opacity: 1;
+      transition: transform .3s ease, opacity .3s ease;
+      transform: translateY(-50%);
+      transform-origin: center;
+    }
+  }
+
+  .m-navigation-item-level2 {
+    display: inline-block;
+    margin: 5px 0 5px 20px;
+    font-size: $base-fontsize;
+    text-decoration: none;
+    cursor: pointer;
+
+    @include mq('M') {
+      position: relative;
+      margin: 0;
+      padding: 10px 0;
+      padding-bottom: 0;
+      border-bottom: 2px solid transparent;
+      color: $color-contrast-primary;
+
+      @include mq('L') {
+        white-space: nowrap;
+      }
+
+      &:hover {
+        border-bottom: 2px solid $color-contrast-primary;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.VariantC {
+
+  @include mq('M') {
+    float: right !important;
+    margin-left: 10px;
+
+    .m-navigation-list-level2 {
+      transform: translateX(-80%);
+
+      .m-navigation-item-level2 {
+        font-size: rem(14px);
+      }
+
+      &::before {
+        right: 20px;
+        left: calc(90% - 10px);
+      }
+    }
+  } // sass-lint:disable-line class-name-format
+  .m-navigation-item-level1 {
+    padding-left: 12.5px !important;
+    border-radius: 4px;
+    // sass-lint:disable no-important
+    background: $color-text;
+    color: #fff !important;
+    font-size: rem(12px);
+    line-height: 2 !important;
+
+    .a-icon {
+      display: inline-block;
+      vertical-align: top;
+      margin-top: -2px;
+      margin-right: 8px;
+      line-height: 26px;
+    }
+  }
+
+  &:hover {
+    .m-navigation-item-level1 {
+      background-color: #f8f5f2;
+      color: $color-text !important;
+
+      span {
+        border-color: transparent !important;
+        color: inherit;
+      }
+    }
+  }
+}
+/* stylelint-enable */

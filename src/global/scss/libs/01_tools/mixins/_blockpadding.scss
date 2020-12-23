@@ -1,0 +1,28 @@
+@mixin blockPadding($type: default) {
+
+  // forms in a stepped form
+  @if ($type == 'form') {
+    padding: $base-spacing 20px 40px;
+
+    @include mq('S') {
+      padding: $base-spacing 40px 40px;
+    }
+
+    @include mq('M') {
+      padding: 40px 80px 60px $base-spacing;
+    }
+  }
+
+  // default
+  @else {
+    padding: $base-spacing 20px;
+
+    @include mq('S') {
+      padding: $base-spacing;
+    }
+
+    @include mq('M') {
+      padding: $base-spacing $base-spacing 60px;
+    }
+  }
+}

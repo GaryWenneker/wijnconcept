@@ -1,0 +1,31 @@
+.a-form-title {
+  @extend %h3;
+  margin-top: 30px;
+  font-size: 22px;
+
+  @include mq('M') {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  // titel bovenaan form
+  /* stylelint-disable selector-max-compound-selectors */
+  .m-form > &:first-child,
+  .m-form > [class*='m-form__']:first-child > &:first-child,
+  .m-form > .m-form__box > .m-form__row:first-child > &:first-child {
+    margin-top: 0;
+  }
+
+  // twee opeenvolgende titels
+  & + &,
+  & + [class*='m-form__'] > &:first-child,
+  & + .m-form__box > .m-form__row:first-child > &:first-child {
+    margin-top: 10px;
+
+    @include mq('M') {
+      margin-top: 20px;
+    }
+  }
+  /* stylelint-enable selector-max-compound-selectors */
+}

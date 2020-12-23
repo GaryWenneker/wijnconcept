@@ -1,0 +1,49 @@
+/* 
+
+  helpers moeten elke bestaande component styling kunnen overrulen
+  dus !important is hier gerechtvaardigd
+
+*/
+/* stylelint-disable declaration-no-important */
+.h-is-invisible {
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.h-only-mobile {
+  @include mq('M') {
+    display: none;
+  }
+}
+
+.h-only-desktop {
+  @include mq('M-max') {
+    display: none;
+  }
+}
+
+.h-block-scrolling {
+  // simple fix to minimize horizontal jump 
+  // when scrollbar disappears
+  @at-root body#{&}:not(.touch) {
+    padding-right: 17px;
+  }
+  overflow-y: hidden !important;
+}
+
+.h-decimal {
+  display: inline-block;
+  width: 2.25ch;
+  text-align: left;
+  white-space: pre;
+}
+
+.h-noselect {
+  user-select: none;
+}
+/* stylelint-enable declaration-no-important */

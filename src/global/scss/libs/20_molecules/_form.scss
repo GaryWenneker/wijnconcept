@@ -1,0 +1,210 @@
+.m-form {
+
+  // spacing (with themes)
+  &--dark,
+  &--medium,
+  &--light {
+    @include blockPadding('form');
+  }
+
+  // a section can be used to create a nested container
+  // that will be full with a different theme
+  &__section {
+    width: calc(100% + 40px);
+    margin-bottom: 30px;
+    margin-left: -20px;
+    padding: 30px 20px;
+
+    @include mq('S') {
+      width: calc(100% + 80px);
+      margin-left: -40px;
+      padding: 30px 40px;
+    }
+
+    @include mq('M') {
+      width: calc(100% + 80px +  #{$base-spacing});
+      margin-left: (0 - $base-spacing);
+      padding: 30px 80px 30px $base-spacing;
+    }
+
+    &:last-child {
+      margin-bottom: -40px;
+
+      @include mq('M') {
+        margin-bottom: -10px;
+      }
+    }
+  }
+
+  // theming (m-form and m-form__section)
+  &, &__section {
+    &--light { @extend %h-theme-light; }
+    &--medium { @extend %h-theme-medium; }
+    &--dark { @extend %h-theme-dark; }
+  }
+
+  // general modifier intended for use on a row or box
+  // to animate dynamic appearing form elements
+  &--appear {
+    animation: fade-in-75-from-top-5 .16s linear;
+  }
+  // for bigger, wider questions
+  &--appear2 {
+    animation: fade-in-75-from-top-20 .16s linear;
+  }
+
+  // general indent,
+  // possibly only usefull in transition to newer form designs
+  &--indent {
+    @include mq('S') {
+      margin-right: 24px;
+      margin-left: 24px;
+    }
+    @include mq('M') {
+      margin-right: 42px;
+      margin-left: 42px;
+    }
+  }
+
+  // form layout, a row should contain cells
+  &__row {
+    display: flex;
+    flex-direction: column;
+
+    @include mq('M') {
+      flex-direction: row;
+
+      &--wide {
+        flex-direction: column;
+      }
+    }
+
+    & + &,
+    .m-form__box + & {
+      margin-top: 15px;
+
+      @include mq('M') {
+        margin-top: 6px;
+      }
+
+      &.m-form__row--status-message {
+        margin-top: 20px;
+    
+        @include mq('M') {
+          margin-top: 15px;
+        }
+      }
+    }
+
+    &--status-message:not(:last-child) {
+      margin-bottom: 30px;
+    }
+
+    &--separator:not(:first-child) {
+      margin-top: 30px;
+
+      @include mq('M') {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: $m-form-row-separator-border;
+      }
+    }
+
+    &--horizontal {
+      flex-direction: row;
+    }
+  }
+
+  // form layout, a box is a neutral container
+  // that can be used as a row but without any internal markup
+  // usefull for form controls that combine several form__row's of their own
+  &__box {
+    & + &:not(.m-form__row--separator),
+    .m-form__row + &:not(.m-form__row--separator) {
+      margin-top: 15px;
+
+      @include mq('M') {
+        margin-top: 6px;
+      }
+    }
+
+    // block indent for new design
+    &--indent {
+      margin-top: 30px;
+
+      @include mq('M') {
+        padding-right: 42px;
+        padding-left: 42px;
+      }
+
+      &:not(:first-child) {
+        padding-top: 30px;
+        border-top: $m-form-box-indent-border;
+      }
+
+      .a-form-title + & {
+        padding-top: 0;
+        border-top: 0;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        border-bottom: $m-form-box-indent-border;
+      }
+
+      .m-form__box + &,
+      .m-form__row + & {
+        @include mq('M') {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+
+  &__cell {
+    flex: 1 0;
+
+    &--M300 {
+      @include mq('M') {
+        flex: 0 0 300px;
+        margin-left: auto;
+      }
+    }
+
+    &--compact {
+      flex: 0 0 auto;
+      margin-left: auto;
+    }
+  }
+
+  &__failure {
+    @extend %h-theme-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    padding: 55px 15px;
+    text-align: center;
+
+    @include mq('S') {
+      padding: 55px 40px;
+    }
+        
+    img {
+      margin-bottom: 16px;
+      animation: bump-in .3s cubic-bezier(.785, .135, .15, .86);
+    }
+  }
+
+
+  // old stuff, should be removed after all react forms are refactored
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 621px;
+    margin: 21px 0;
+  }
+}

@@ -1,0 +1,50 @@
+/* .m-section {
+} */
+
+.m-contained {
+  @include contained;
+}
+
+/* Used for sections that don't contain a grid */
+.m-page-wrap {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  max-width: $max-site-width;
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+  background: none;
+  padding: 0 $grid-spacing;
+
+  .m-page-wrap {
+    padding: 0; // prevent double spacings in nested grids
+  }
+
+  .#{$gridname} {
+    padding: 0; // prevent double spacings in nested grids
+  }
+
+  .m-flex-columns {
+    padding: 0; // prevent double spacings in nested grids
+  }
+
+  // for 100% wide content
+  &.m-page-wrap--wide {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &.m-page-wrap--row {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    flex-direction: column;
+
+    @include mq('L') {
+      flex-wrap: nowrap;
+      flex-direction: row;
+    }
+  }
+}

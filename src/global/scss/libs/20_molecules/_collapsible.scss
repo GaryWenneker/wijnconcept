@@ -1,0 +1,35 @@
+/* 
+
+  volgens mij is dit bedoeld voor de react-collapsed package(?)
+  maar hoewel we deze package wel gebruiken in StepWrapper
+  gebruiken we niet deze aparte styling
+  dus waarschijnlijk kan dit weg?
+
+*/
+// molecule still needs to be made: can take in its panel a string, string[] or ([key: string] : string)
+// just styled the version with ([key: string] : string) for now
+/* stylelint-disable */
+.m-collapsible {
+  .line { // for ([key: string] : string) models
+    display: flex;
+    margin-bottom: map-get($spacings, 1);
+    color: rgb(255, 175, 188);
+    opacity: .7;
+
+    &:first-child {
+      margin-top: map-get($spacings, 2);
+    }
+
+    div {
+      width: 50%;
+      padding-right: map-get($spacings, 1);
+
+      + div {
+        padding-right: 0;
+        padding-left: map-get($spacings, 1);
+        text-align: right;
+      }
+    }
+  }
+}
+/* stylelint-enable */

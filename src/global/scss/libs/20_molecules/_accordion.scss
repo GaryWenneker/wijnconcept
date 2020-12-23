@@ -1,0 +1,430 @@
+/* 
+
+  wordt gebruikt in Easyflow
+  code zou vervangen moeten worden door componenten uit de aanvraagstraat
+
+  !important zou verwijderd moeten worden
+
+*/
+@mixin loading-states {
+  position: relative;
+  
+  // Skeleton
+  &::before {
+    content: '';
+    max-width: 475px;
+    height: 0;
+    border-radius: 10px;
+  }
+
+  &.is-loading {
+    &::before {
+      min-height: 271px;
+    }
+  }
+
+  // Loader
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.onvz.nl/static/images/spinner.gif') 50% 50% no-repeat;
+    background-color: rgba(255, 255, 255, .8);
+    background-size: 24px;
+    color: fnColor(4);
+    cursor: wait;
+    transition: .35s ease-out;
+  }
+
+  &:not(.has-data):not(.is-empty):not(.has-loaded):not(.is-loading):not(.has-error),
+  &.is-empty,
+  &.has-error {
+    &::before {
+      display: block;
+    }
+
+    .m-accordion__panel-wrapper {
+      /* stylelint-disable-next-line declaration-no-important */
+      display: none !important;
+    }
+  }
+
+  &:not(.is-loading) {
+    &::after {
+      opacity: 0;
+      pointer-events: none;
+
+      /* stylelint-disable-next-line selector-no-qualifying-type */
+      body.is-ie10 & {
+        display: none;
+      }
+    }
+  }
+
+  &-status {
+    display: none;
+    width: 100%;
+    margin: 33px 0;
+    text-align: center;
+  }
+
+  .e-status-title {
+    padding-top: 5px;
+    font-weight: 600;
+  }
+
+
+  .e-status-wrapper {
+    padding: 55px;
+  }     
+
+  &.has-loaded {
+    &.is-empty,
+    &.has-error {
+      .m-accordion__panel-wrapper {
+        /* stylelint-disable-next-line declaration-no-important */
+        display: none !important;
+      }
+    }
+
+    &:not(.has-data):not(.has-error) {
+      .m-accordion__panel-status.m-accordion__panel-no-results {
+        display: block;
+      }
+    }
+
+    &.has-error {
+      .m-accordion__panel-status.m-accordion__panel-error {
+        display: block;
+      }
+    }
+  }
+
+  &.has-data.has-loaded:not(.has-error) {
+    &::before {
+      /* stylelint-disable-next-line declaration-no-important */
+      display: none !important;
+    }
+  }
+}
+
+.m-accordion {
+  width: 100%;
+  // display: flex;
+
+  &__panel {
+
+    @include loading-states;
+
+    &.static {
+      margin-top: map-get($spacings, 3);
+    }
+  }
+
+  &__panel-label {
+    
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: rem(25px) rem(40px) rem(25px) rem(30px);
+    background-color: #f8f5f2;
+    color: #000;
+    outline: none;
+    font-size: rem(20px);
+    cursor: pointer;
+    transition: color .2s linear;
+
+    &.static {
+      cursor: default;
+    }
+  }
+
+  &__svg {
+    display: flex;
+    order: 2;
+    color: fnColor(4);
+
+    .a-icon {
+      @include h-transition-accordion-icon;
+      display: flex;
+      font-size: rem(30px);
+    }
+
+    &--active .a-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__checkmark {
+    display: flex;
+    flex-grow: 1;
+    align-items: stretch;
+    justify-content: flex-end;
+    order: 1;
+    margin-right: rem(23px);
+
+    .a-icon {
+      @include h-transition-accordion-icon;
+      display: flex;
+      font-size: rem(30px);
+
+      &::before {
+        color: $color-succes;
+      }
+    }
+  }
+
+  &__panel-inner {
+    @include h-transition-accordion-inner;
+    overflow: hidden;
+    max-height: 0;
+    margin: 0;
+    background-color: #ece7de;
+
+    .m-accordion__panel-content {
+      @include h-transition-accordion-content;
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+
+    > .a-button {
+      margin: 0 30px 30px;
+    }
+
+    &[aria-hidden='false'] {
+      max-height: none;
+      // margin-top: map-get($spacings, 1);
+      // margin-bottom: map-get($spacings, 3);
+
+      .m-accordion__panel-content {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__panel-content {
+    margin: 0;
+    padding: 0;
+    transition: opacity .3s linear .18s;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 3px;
+  }
+
+  /* stylelint-disable max-nesting-depth */
+  &--carefreeplus {
+    .a-status-message {
+      font-size: $base-fontsize;
+    }
+
+    &__panel {
+      .m-accordion {
+        &__svg {
+          align-items: center;
+          justify-content: space-between;
+          order: 0;
+          width: 100%;
+          padding: 0 0 rem(20px);
+
+          &--active {
+            padding: rem(30px);
+            background-color: #f8f5f2;
+          }
+        }
+
+        &__panel-label {
+          display: flex;
+          flex-direction: column;
+          padding: 0;
+          background-color: transparent;
+          cursor: default;
+
+          &-title {
+            color: #333;
+            font-weight: 600;
+            font-size: rem(38px);
+            line-height: rem(55px);
+          }
+        }
+
+        &__panel-inner {
+          min-height: 0;
+        }
+
+        &__panel__title-container {
+          width: 100%;
+
+          &--active {
+            display: none;
+          }
+        }
+
+        &__panel-content {
+          display: flex;
+          flex-direction: column;
+          padding: 0 rem(30px);
+          background-color: #f8f5f2;
+        }
+
+        &__panel-content-details {
+          > p {
+            margin-bottom: rem(20px);
+          }
+
+          &--reversed {
+            display: flex;
+            flex-direction: column-reverse;
+
+            /* stylelint-disable-next-line selector-class-pattern */
+            .m-accordion--carefreeplus__text {
+              font-style: italic;
+            }
+          }
+        }
+      }
+
+      &__change-link {
+        color: #9b9893;
+        font-size: rem(16px);
+        line-height: rem(22px);
+        text-decoration: underline;
+        cursor: pointer;
+
+        &--active {
+          display: none;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      &__status,
+      &__info {
+        margin-bottom: rem(25px);
+        font-size: rem(16px);
+        line-height: rem(22px);
+      }
+
+      &__info {
+        padding-right: rem(20px);
+      }
+
+      &__status {
+        // font-weight: 600;
+        padding: rem(30px);
+        background-color: #ece7de;
+
+        &--is-error {
+          color: #c33e4e;
+        }
+      }
+
+      &__form-container {
+        padding: rem(30px);
+        background-color: #ece7de;
+      }
+
+      &--active {
+        .m-accordion__panel-inner {
+          padding-bottom: 10px;
+          border-bottom: 1px solid rgba(155, 152, 147, .5);
+          background-color: #fff;
+        }
+      }
+
+      .cancel-button {
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .add-contact-person {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &__button-container {
+        @include mq('M') {
+          margin-left: 36%;
+        }
+      }
+    }
+
+    &__title {
+      padding: rem(20px);
+      font-weight: 600;
+      font-size: rem(20px);
+      line-height: rem(33px);
+
+      small {
+        font-weight: normal;
+      }
+    }
+
+    &__subtitle {
+      font-weight: 500;
+    }
+
+    &__contact-person {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: rem(10px);
+
+      &:last-of-type {
+        margin-bottom: rem(30px);
+      }
+
+      &__info {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &__remove-link {
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    &__button-container {
+      display: flex;
+      align-items: baseline;
+      padding: rem(30px);
+      background-color: #f8f5f2;
+    }
+
+    &__button-column {
+      margin-right: 20px;
+    }
+  }
+  /* stylelint-enable max-nesting-depth */
+}
+
+// variant horizontal (only on desktop)
+.m-accordion__panel-content-title {
+  display: none;
+}
+
+@include mq('S') {
+  .m-accordion {
+    &__panel-content {
+      font-size: 16px;
+    }
+  }
+}

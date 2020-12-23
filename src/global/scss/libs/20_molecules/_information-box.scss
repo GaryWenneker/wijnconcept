@@ -1,0 +1,84 @@
+.m-information-box {
+  padding: 10px 15px;
+  background-color: $color-contrast-primary;
+
+  @include mq('M') {
+    display: flex;
+    padding: 60px 80px;
+  }
+
+  &__image {
+    @include webfont-icon('car');
+    width: 120px;
+    height: 49px;
+    margin: 20px auto 25px;
+
+    @include mq('M') {
+      width: 220px;
+      height: 90px;
+      margin: 50px 100px 0 0;
+    }
+
+    &::before {
+      color: $color-text;
+      font-size: 3vw;
+
+      @include mq('XL') {
+        font-size: 36px;
+      }
+    }
+  }
+
+  &__information {
+    @include mq('M') {
+      width: 460px;
+    }
+  }
+
+  &__title {
+
+    margin-bottom: map-get($spacings, 2);
+    color: $color-brand-secondary;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: $header-font;
+    line-height: 1.27;
+
+    @include mq('M') {
+      margin-bottom: map-get($spacings, 3);
+    }
+  }
+
+  &__description {
+
+    margin-bottom: map-get($spacings, 3);
+    color: $color-brand-secondary;
+    font-size: $base-fontsize;
+    font-family: $default-font;
+    line-height: $base-lineheight;
+
+    @include mq('M') {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__button {
+    &--clear {
+      margin-bottom: map-get($spacings, 4);
+
+      @include mq('M') {
+        margin-bottom: 30px;
+      }
+    }
+
+    &--contact {
+      > a {
+        width: 100%;
+
+        @include mq('M') {
+          width: auto;
+        }
+      }
+    }
+  }
+}

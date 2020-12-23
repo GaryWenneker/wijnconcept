@@ -1,0 +1,212 @@
+/* 
+
+  === deprecated ===
+
+  Wordt gebruikt in Easyflow
+
+  Zou vervangen moeten worden door form standaard zoals die voor de aanvraagstraat is ontwikkeld
+  Zodoende is stylelinting uitgeschakeld voor dit bestand
+
+*/
+
+/* stylelint-disable */
+$a-radio-checked-color: #6e6350 !default;
+$a-radio-hover-color: #6e6350 !default;
+
+.a-radio-input-button {
+  display: flex;
+  color: #403e3b;
+
+  @include mq('M') {
+    flex-direction: row;
+  }
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--vertical {
+
+    display: inline-grid;
+    flex-direction: column;
+    grid-auto-flow: dense;
+    align-items: center;
+    min-width: 14px;
+    margin-top: rem(5px);
+
+    .a-radio-input-button__block {
+      width: 100%;
+      height: initial;
+    }
+
+    label {
+      display: flex;
+      align-items: initial !important;
+      margin-top: rem(3px);
+      margin-bottom: inherit;
+      line-height: initial;
+      
+
+      &::before {
+        flex: none;
+        min-width: 14px !important;
+        margin-top: inherit;
+        margin-right: .75rem;
+      }
+    }
+
+    label input[type='radio'] {
+      flex: none;
+      margin-right: .75rem;
+    }
+  }
+
+  &__block {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    min-height: 46px;
+    margin-right: rem(7px);
+    padding: 2px 15px 2px 17px;
+    border: 1px solid #333;
+    background-color: fnThemeMedium(bg);
+    color: fnThemeMedium(text);
+    cursor: pointer;
+    transition: background-color .12s linear;
+
+    @include mq('M') {
+      width: 50%;
+      height: 38px;
+
+      &:first-child {
+        margin-right: 6px;
+      }
+    }
+
+    &:hover {
+      .a-radio-input-button__label {
+        color: #000;
+      }
+
+      .a-radio-input-button__styled-input {
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, .1); // sass-lint:disable-line no-color-literals
+      }
+    }
+
+    &:active {
+      .a-radio-input-button__styled-input {
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, .1); // sass-lint:disable-line no-color-literals
+      }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 6px;
+    }
+
+    &--selected {
+      border: 1px solid #fff;
+      background-color: #fff;
+    }
+  }
+
+  &__styled-input {
+    position: absolute;
+    top: 50%;
+    width: rem(14px);
+    height: rem(14px);
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  &__input-hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked + .a-radio-input-button__input-visible,
+    &[checked] + .a-radio-input-button__input-visible {
+      border: 3px solid #fff;
+      border-radius: 50%;
+      background-color: $color-succes;
+      box-shadow: 0 0 0 1px $color-text;
+    }
+
+    &:checked,
+    &[checked] {
+      border: 1px solid #fff;
+      background-color: #fff;
+    }
+  }
+
+  &__input-visible {
+    display: block;
+    height: 100%;
+    border: 3px solid #ece7de;
+    border-radius: 50%;
+    background-color: #ece7de;
+    box-shadow: 0 0 0 1px #403e3b;
+    transition: border-color .3s, background-color .3s, box-shadow .3s;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: (map-get($spacings, 5) / 2);
+    cursor: pointer;
+
+    @include mq('M') {
+      padding-left: rem(35px);
+    }
+
+    // icon left spacing
+    [class*='a-icon__'] {
+      padding-left: rem(10px);
+
+      &::before {
+        font-size: rem(25px);
+      }
+    }
+  }
+
+  .react-inputs-validation__radiobox__label___2tQsB {
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '';
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      width: 14px;
+      height: 14px;
+      margin-right: 1em;
+      border: 1px solid #4c5356;
+      border-radius: 100%;
+      background: #ece7de;
+      text-align: center;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+  }
+
+  .a-radio-input-button__block:has(.react-inputs-validation__checked___2O0Ju) {
+    background: #fff;
+  }
+
+  .react-inputs-validation__radiobox__label___2tQsB.react-inputs-validation__checked___2O0Ju::before {
+    border: 3px solid #fff;
+    background-color: #44b735;
+    box-shadow: 0 0 0 1px #4c5356;
+  }
+}
+/* stylelint-enable */

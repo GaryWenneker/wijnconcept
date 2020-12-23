@@ -1,0 +1,285 @@
+.a-btn {
+  @include btn-base($border-radius: 0, $font-weight: $a-btn-font-weight);
+
+  & + & {
+    margin-left: 10px;
+  }
+
+  // left aligned icon needs span around text
+  .a-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 5px;
+    color: currentColor;
+    text-decoration: none;
+    transform: translateX(-2px);
+
+    &::before {
+      text-decoration: none;
+    }
+
+    // right aligned icon
+    &:last-child {
+      margin-right: 0;
+      margin-left: 11px;
+      transform: translateX(2px);
+    }
+  }
+
+  // button colors
+
+  &, &--secondary {
+    @include btn-colors(
+      $background-color: $a-btn-secondary-background-color,
+      $border-color: $a-btn-secondary-border-color,
+      $color: $a-btn-secondary-color,
+      $hover-background: $a-btn-secondary-hover-background,
+      $hover-border: $a-btn-secondary-hover-border,
+      $hover-color: $a-btn-secondary-hover-color,
+      $active-background: $a-btn-secondary-active-background,
+      $active-border: $a-btn-secondary-active-border,
+      $active-color: $a-btn-secondary-active-color,
+    );
+  }
+
+  &--primary {
+    @include btn-colors(
+      $background-color: $a-btn-primary-background-color,
+      $border-color: $a-btn-primary-border-color,
+      $color: $a-btn-primary-color,
+      $hover-background: $a-btn-primary-hover-background,
+      $hover-border: $a-btn-primary-hover-border,
+      $hover-color: $a-btn-primary-hover-color,
+      $active-background: $a-btn-primary-active-background,
+      $active-border: $a-btn-primary-active-border,
+      $active-color: $a-btn-primary-active-color,
+    );
+  }
+
+  &--primary-outline {
+    @include btn-colors(
+      $background-color: $a-btn-primary-outline-background-color,
+      $border-color: $a-btn-primary-outline-border-color,
+      $color: $a-btn-primary-outline-color,
+      $hover-background: $a-btn-primary-outline-hover-background,
+      $hover-border: $a-btn-primary-outline-hover-border,
+      $hover-color: $a-btn-primary-outline-hover-color,
+      $active-background: $a-btn-primary-outline-active-background,
+      $active-border: $a-btn-primary-outline-active-border,
+      $active-color: $a-btn-primary-outline-active-color,
+    );
+  }
+
+  &--succes-outline {
+    @include btn-colors(
+      $background-color: $a-btn-succes-outline-background-color,
+      $border-color: $a-btn-succes-outline-border-color,
+      $color: $a-btn-succes-outline-color,
+      $hover-background: $a-btn-succes-outline-hover-background,
+      $hover-border: $a-btn-succes-outline-hover-border,
+      $hover-color: $a-btn-succes-outline-hover-color,
+      $active-background: $a-btn-succes-outline-active-background,
+      $active-border: $a-btn-succes-outline-active-border,
+      $active-color: $a-btn-succes-outline-active-color,
+    );
+  }
+
+  &--link,
+  &--link-icon {
+    @include btn-colors(
+      $background-color: transparent,
+      $border-color: transparent,
+      $color: currentColor,
+      $hover-background: transparent,
+      $hover-border: transparent,
+      $hover-color: currentColor
+    );
+
+    // left aligned icon needs span around text
+    .a-icon {
+      margin-right: 3px;
+
+      // right aligned icon
+      &:last-child {
+        margin-right: 0;
+        margin-left: 3px;
+      }
+    }
+  }
+
+  &--link {
+    &, &:hover, &:active, &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  &--link-icon {
+    &, &:hover, &:active {
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // button colors for dark backgrounds
+
+  &--primary-dark {
+    @include btn-colors(
+      $background-color: $a-btn-primary-dark-background-color,
+      $border-color: $a-btn-primary-dark-border-color,
+      $color: $a-btn-primary-dark-color,
+      $hover-background: $a-btn-primary-dark-hover-background,
+      $hover-border: $a-btn-primary-dark-hover-border,
+      $hover-color: $a-btn-primary-dark-hover-color,
+      $active-background: $a-btn-primary-dark-active-background,
+      $active-border: $a-btn-primary-dark-active-border,
+      $active-color: $a-btn-primary-dark-active-color,
+    );
+  }
+
+  &--secondary-dark {
+    @include btn-colors(
+      $background-color: $a-btn-secondary-dark-background-color,
+      $border-color: $a-btn-secondary-dark-border-color,
+      $color: $a-btn-secondary-dark-color,
+      $hover-background: $a-btn-secondary-dark-hover-background,
+      $hover-border: $a-btn-secondary-dark-hover-border,
+      $hover-color: $a-btn-secondary-dark-hover-color,
+      $active-background: $a-btn-secondary-dark-active-background,
+      $active-border: $a-btn-secondary-dark-active-border,
+      $active-color: $a-btn-secondary-dark-active-color,
+    );
+  }
+
+  &--primary-outline-dark {
+    @include btn-colors(
+      $background-color: $a-btn-primary-outline-dark-background-color,
+      $border-color: $a-btn-primary-outline-dark-border-color,
+      $color: $a-btn-primary-outline-dark-color,
+      $hover-background: $a-btn-primary-outline-dark-hover-background,
+      $hover-border: $a-btn-primary-outline-dark-hover-border,
+      $hover-color: $a-btn-primary-outline-dark-hover-color,
+      $active-background: $a-btn-primary-outline-dark-active-background,
+      $active-border: $a-btn-primary-outline-dark-active-border,
+      $active-color: $a-btn-primary-outline-dark-active-color,
+    );
+  }
+
+  &--succes-outline-dark {
+    @include btn-colors(
+      $background-color: $a-btn-succes-outline-dark-background-color,
+      $border-color: $a-btn-succes-outline-dark-border-color,
+      $color: $a-btn-succes-outline-dark-color,
+      $hover-background: $a-btn-succes-outline-dark-hover-background,
+      $hover-border: $a-btn-succes-outline-dark-hover-border,
+      $hover-color: $a-btn-succes-outline-dark-hover-color,
+      $active-background: $a-btn-succes-outline-dark-active-background,
+      $active-border: $a-btn-succes-outline-dark-active-border,
+      $active-color: $a-btn-succes-outline-dark-active-color,
+    );
+  }
+
+  /* &--link-dark {
+    @include btn-colors(
+      $background-color: transparent,
+      $border-color: transparent,
+      $color: currentColor,
+      $hover-background: transparent,
+      $hover-border: transparent,
+      $hover-color: currentColor,
+    );
+
+    padding-left: 0;
+    padding-right: 0;
+
+    &, &:hover, &:active {
+      text-decoration: underline;
+    }
+
+    // left aligned icon needs span around text
+    .a-icon {
+      margin-right: 3px;
+
+      // right aligned icon
+      &:last-child {
+        margin-right: 0;
+        margin-left: 3px;
+      }
+    }
+  } */
+
+  // button on primary background
+
+  &--dark {
+    @include btn-colors(
+      $background-color: $a-btn-dark-background-color,
+      $border-color: $a-btn-dark-border-color,
+      $color: $a-btn-dark-color,
+      $hover-background: $a-btn-dark-hover-background,
+      $hover-border: $a-btn-dark-hover-border,
+      $hover-color: $a-btn-dark-hover-color,
+      $active-background: $a-btn-dark-active-background,
+      $active-border: $a-btn-dark-active-border,
+      $active-color: $a-btn-dark-active-color,
+    );
+  }
+
+  &--chat {
+    @include btn-colors(
+      $background-color: $a-btn-primary-background-color,
+      $border-color: $a-btn-primary-border-color,
+      $color: $a-btn-primary-color,
+      $hover-background: $a-btn-primary-hover-background,
+      $hover-border: $a-btn-primary-hover-border,
+      $hover-color: $a-btn-primary-hover-color,
+      $active-background: $a-btn-primary-active-background,
+      $active-border: $a-btn-primary-active-border,
+      $active-color: $a-btn-primary-active-color,
+    );
+    position: fixed;
+    top: 50%;
+    right: -18px;
+    z-index: map-get($z-index, 'chatbutton');
+    margin-top: 125px;
+    transform: rotate(-90deg);
+  }
+
+  // modifiers
+
+  &--wrap {
+    display: inline-block; // IE11 hack
+    height: auto; // IE11 hack
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    white-space: normal;
+  }
+
+  &--tiny {
+    min-height: 32px;
+    padding: 0 15px;
+    font-size: 14px;
+  }
+
+  &--big {
+    min-height: 48px;
+    padding: 0 35px;
+    font-size: 18px;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  // less horizontal padding on mobile
+  // helps w 100% wide buttons on mobile w lots of text
+  &--S-narrow {
+    padding-right: 10px;
+    padding-left: 10px;
+
+    @include mq('M') {
+      padding-right: 25px;
+      padding-left: 25px;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.a-form-error {
+  @include webfont-icon('22-system-checkmark-no');
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: left;
+  min-height: $form-element-height;
+  margin-top: 6px;
+  padding: 9px 20px 9px 26px;
+  background-color: $a-form-error-bg;
+  color: $a-form-error-text;
+  font-weight: bold;
+  transform-origin: top center;
+  animation: scale-top .1s cubic-bezier(.6, .04, .98, .335);
+
+  &::before {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: 600;
+    transform: scale(1.5) translate(-8px, 2px);
+  }
+}

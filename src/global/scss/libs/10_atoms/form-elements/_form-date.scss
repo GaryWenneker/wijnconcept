@@ -1,0 +1,9 @@
+.a-form-date {
+  min-width: 0; //Fix to make flexbox work on inputs in Firefox and Edge
+  text-align: center;
+
+  &:not(:last-child) {
+    border-right: 0;
+  }
+    
+}

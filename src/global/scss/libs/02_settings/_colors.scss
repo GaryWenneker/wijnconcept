@@ -1,0 +1,161 @@
+// color palet, replace with custom site colors
+$colors: (
+  0:  #fff,
+  1:  #000,
+  2:  #fc0,
+  3:  #fff1b8,
+  4:  #333,
+  5:  #555048,
+  6:  #9b9893,
+  7:  #d0d0cf,
+  8:  #ece7de,
+  9:  #f5f3ee,
+  10: #1cb66b,
+  11: #c33e4e,
+
+  // legacy colors defined on old site
+  // (don't use I guess)
+
+  // 12: #f6f6f6,
+  // 13: #cfceca,
+  // 14: #403e3b,
+  // 15: #6e6350,
+  // 16: #827561,
+  // 17: #8c8882,
+  // 18: #f8f5f2,
+  // 19: #82bce0,
+  // 20: #e6bb05,
+) !default;
+
+// named colors
+$color-text:        fnColor(4) !default;
+$color-text-light:  transparentize(map-get($colors, 4), .4) !default;
+
+$color-brand:       fnColor(2) !default;
+
+$color-succes:      fnColor(10) !default;
+$color-warning:     fnColor(2) !default;
+$color-danger:      fnColor(11) !default;
+
+//
+// themes
+//
+// for ease of use, use the associated functions
+// to easily get the colors like: 
+//
+// b {
+//   color: fnThemeLight(text);
+// }
+//
+// headers and links:
+// using null will result in using currentColor
+//
+$theme-default: (
+  bg:         fnColor(0),
+  text:       fnColor(4),
+  primary:    fnColor(0),
+  secondary:  fnColor(1),
+  header:     null,
+  link:       null,
+  hover:      null,
+  active:     null,
+) !default;
+
+$theme-dark: (
+  bg:         fnColor(4),
+  text:       fnColor(0),
+  primary:    fnColor(4),
+  secondary:  fnColor(0),
+  header:     null,
+  link:       fnColor(2),
+  hover:      fnColor(0),
+  active:     fnColor(7),
+) !default;
+
+$theme-medium: (
+  bg:         fnColor(8),
+  text:       fnColor(4),
+  primary:    fnColor(8),
+  secondary:  fnColor(4),
+  header:     null,
+  link:       null,
+  hover:      null,
+  active:     null,
+) !default;
+
+$theme-light: (
+  bg:         fnColor(9),
+  text:       fnColor(4),
+  primary:    fnColor(9),
+  secondary:  fnColor(4),
+  header:     null,
+  link:       null,
+  hover:      null,
+  active:     null,
+) !default;
+
+$theme-alt-light: (
+  bg:         fnColor(3),
+  text:       fnColor(4),
+  primary:    fnColor(3),
+  secondary:  fnColor(4),
+  header:     null,
+  link:       null,
+  hover:      null,
+  active:     null,
+) !default;
+
+$theme-alt-dark: (
+  bg:         fnColor(2),
+  text:       fnColor(4),
+  primary:    fnColor(2),
+  secondary:  fnColor(4),
+  header:     null,
+  link:       null,
+  hover:      null,
+  active:     null,
+) !default;
+
+$theme-succes: (
+  bg:         fnColor(10),
+  text:       fnColor(0),
+  primary:    fnColor(10),
+  secondary:  fnColor(0),
+  header:     null,
+  link:       null,
+  hover:      null,
+  active:     null,
+) !default;
+
+$theme-warning: (
+  bg:         fnColor(3),
+  text:       fnColor(4),
+  primary:    fnColor(3),
+  secondary:  fnColor(4),
+  header:     null,
+  link:       null,
+  hover:      null,
+  active:     null,
+) !default;
+
+$theme-danger: (
+  bg:         fnColor(11),
+  text:       fnColor(9),
+  primary:    fnColor(11),
+  secondary:  fnColor(9),
+  header:     null,
+  link:       null,
+  hover:      null,
+  active:     null,
+) !default;
+
+$theme-info: (
+  bg:         fnColor(0),
+  text:       fnColor(4),
+  primary:    fnColor(0),
+  secondary:  fnColor(4),
+  header:     null,
+  link:       null,
+  hover:      null,
+  active:     null,
+) !default;

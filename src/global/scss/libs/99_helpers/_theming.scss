@@ -1,0 +1,127 @@
+//
+// theme color helpers
+//
+// doesn't use @extend to ensure helper class
+// can overrule local @extend of theme on a component
+// link colors, if present, do not use important as not to overrule buttons
+//
+
+%h-theme-default,
+.h-theme-default {
+  @include mxThemeProperties(
+    fnThemeDefault(bg),
+    fnThemeDefault(text),
+    fnThemeDefault(header),
+    fnThemeDefault(link),
+    fnThemeDefault(hover),
+    fnThemeDefault(active)
+  );
+}
+
+%h-theme-dark,
+.h-theme-dark {
+  @include mxThemeProperties(
+    fnThemeDark(bg),
+    fnThemeDark(text),
+    fnThemeDark(header),
+    fnThemeDark(link),
+    fnThemeDark(hover),
+    fnThemeDark(active)
+  );
+}
+
+%h-theme-medium,
+.h-theme-medium {
+  @include mxThemeProperties(
+    fnThemeMedium(bg),
+    fnThemeMedium(text),
+    fnThemeMedium(header),
+    fnThemeMedium(link),
+    fnThemeMedium(hover),
+    fnThemeMedium(active)
+  );
+}
+
+%h-theme-light,
+.h-theme-light {
+  @include mxThemeProperties(
+    fnThemeLight(bg),
+    fnThemeLight(text),
+    fnThemeLight(header),
+    fnThemeLight(link),
+    fnThemeLight(hover),
+    fnThemeLight(active)
+  );
+}
+
+%h-theme-alt-light,
+.h-theme-alt-light {
+  @include mxThemeProperties(
+    fnThemeAltLight(bg),
+    fnThemeAltLight(text),
+    fnThemeAltLight(header),
+    fnThemeAltLight(link),
+    fnThemeAltLight(hover),
+    fnThemeAltLight(active)
+  );
+}
+
+%h-theme-alt-dark,
+.h-theme-alt-dark {
+  @include mxThemeProperties(
+    fnThemeAltDark(bg),
+    fnThemeAltDark(text),
+    fnThemeAltDark(header),
+    fnThemeAltDark(link),
+    fnThemeAltDark(hover),
+    fnThemeAltDark(active)
+  );
+}
+
+%h-theme-succes,
+.h-theme-succes {
+  @include mxThemeProperties(
+    fnThemeSucces(bg),
+    fnThemeSucces(text),
+    fnThemeSucces(header),
+    fnThemeSucces(link),
+    fnThemeSucces(hover),
+    fnThemeSucces(active)
+  );
+}
+
+%h-theme-warning,
+.h-theme-warning {
+  @include mxThemeProperties(
+    fnThemeWarning(bg),
+    fnThemeWarning(text),
+    fnThemeWarning(header),
+    fnThemeWarning(link),
+    fnThemeWarning(hover),
+    fnThemeWarning(active)
+  );
+}
+
+%h-theme-danger,
+.h-theme-danger {
+  @include mxThemeProperties(
+    fnThemeDanger(bg),
+    fnThemeDanger(text),
+    fnThemeDanger(header),
+    fnThemeDanger(link),
+    fnThemeDanger(hover),
+    fnThemeDanger(active)
+  );
+}
+
+%h-theme-info,
+.h-theme-info {
+  @include mxThemeProperties(
+    fnThemeInfo(bg),
+    fnThemeInfo(text),
+    fnThemeInfo(header),
+    fnThemeInfo(link),
+    fnThemeInfo(hover),
+    fnThemeInfo(active)
+  );
+}

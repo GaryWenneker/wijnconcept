@@ -1,0 +1,10 @@
+.a-easyflow-errormessage {
+  width: 100%;
+  padding: 10px 40px 20px 20px;
+  background-color: #f5f3ee;
+  color: $color-danger;
+
+  &__message {
+    margin-top: 15px;
+  }
+}

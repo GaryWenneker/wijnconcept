@@ -1,0 +1,103 @@
+// ** FONTS ** //
+
+$default-font: $font-primary-stack;
+$default-font-weight: normal;
+$header-font: $font-primary-stack;
+$header-font-weight: normal;
+
+// font basics
+$base-fontsize: 16px !default;
+$base-lineheight: 1.375 !default;
+
+// standard sizing
+$base-spacing: 30px;
+
+$spacings: (
+  0: 0,
+  1: ($base-spacing * .333),
+  2: ($base-spacing * .666),
+  3: $base-spacing,
+  4: ($base-spacing * 2),
+  5: ($base-spacing * 3),
+  6: ($base-spacing * 6)
+) !default;
+
+$half-spacing: map-get($spacings, 1);
+$double-spacing: map-get($spacings, 4);
+
+// form elements and buttons
+$form-element-height: 38px;
+
+// global z-indexes
+$z-index: (
+  navigation:               1001,
+  header:                   1002,
+  chatpopup:                1000,
+  chatbutton:                999,
+) !default;
+
+$z-index-shadow: (
+  0:	none,
+  1:	0 0 5px 0 rgba(0, 0, 0, .15),
+  2:  0 0 10px 0 rgba(0, 0, 0, .15),
+  3:	0 0 20px 0 rgba(0, 0, 0, .15),
+  4:	0 0 30px 0 rgba(0, 0, 0, .15),
+  5:	0 0 40px 0 rgba(0, 0, 0, .25),
+  6:	0 0 50px 0 rgba(0, 0, 0, .35),
+) !default;
+
+// mediaquery breakpoints
+
+// these general breakpoints are in principle only to be used in the layout grid
+// the breakpoints are used 'mobile first'
+// !! components should have their own breakpoints defined by their unique design !!
+
+$breakpoints: (
+  'XS':	320px,
+  'S':	530px,
+  'M':	800px,
+  'L':  1180px,
+  'XL': 1480px
+) !default;
+
+// ** GRID ** //
+
+$use-grid: 			true;
+
+// grid cell naming
+
+//    will construct:
+//        .[$gridname]
+//        .[$gridname]__[cellsizename],
+//        .[$gridname]__[$breakpoints name][cellsizename]
+
+$gridname: 'm-grid';
+$gridcellname: #{$gridname + '__'};
+
+// grid gutter size / 2 > size in between components / 2
+$grid-spacing: $half-spacing;
+$grid-spacing--spacious: (map-get($spacings, 5) / 2) !default;
+
+// grid side-spacing > at the side of the grid - $grid-spacing
+$grid-side-spacing: $half-spacing;
+$grid-side-spacing--desktop: 30px; // + $grid-spacing = 40px
+
+// cell offsets
+// generates lots of extra classes, use only when needed
+$grid-offsets: false;
+
+// grid cell offset naming
+// will construct:
+//    .[$offsetname]__[cellsizename]
+//    .[$offsetname]__[$breakpoints name][cellsizename]
+
+$offsetname: 'm-offset__';
+
+// media query grid
+// will only render for mq's defined in $breakpoints
+$grid-responsive: true;
+
+$min-site-width: 320px - $grid-spacing * 2;
+$max-site-width: 1366px;
+$max-content-width: 1200px; // - gridspacing on both sides > content widht is 1180px
+$max-content-width--no-grid: 1180px;

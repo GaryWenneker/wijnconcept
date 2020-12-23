@@ -1,0 +1,204 @@
+// use predefined transitions >> move to other file when scss scaffolding is done
+@keyframes navigation-list-item-slide {
+  0% {
+    max-height: 0;
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  99% {
+    max-height: 10000px;
+  }
+}
+
+.m-switch-nav-dropdown {
+  position: relative;
+  display: inline-block;
+  max-width: fit-content;
+  margin-right: -(map-get($spacings, 3));
+  margin-left: -(map-get($spacings, 3));
+  font-size: 14px;
+  text-align: left;
+
+  .h-background-color--brand-primary &,
+  .h-background-color--brand-secondary &,
+  .h-background-color--brand-tertiary & {
+    color: $color-text-contrast-body;
+  }
+
+  &,
+  .h-background-color--contrast-primary &,
+  .h-background-color--contrast-secondary &,
+  .h-background-color--contrast-tertiary & {
+    color: $color-text;
+  }
+
+
+  &__button {
+    display: flex;
+    align-items: center;
+    height: $switch-nav-height;
+    padding: map-get($spacings, 3);
+    color: inherit;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+
+      .h-background-color--brand-primary &,
+      .h-background-color--brand-secondary &,
+      .h-background-color--brand-tertiary & {
+        @include fallback-with-fixed-color(color, $color-text-contrast-body-dark, $color-text-contrast-body-dark-fixed);
+      }
+
+      &,
+      .h-background-color--contrast-primary &,
+      .h-background-color--contrast-secondary &,
+      .h-background-color--contrast-tertiary & {
+        @include fallback-with-fixed-color(color, $color-text-light, $color-text-light-fixed);
+      }
+
+      .a-icon {
+        color: inherit;
+      }
+    }
+  }
+
+  &__icon {
+    margin-left: map-get($spacings, 1);
+    color: inherit;
+    transition: transform .2s ease-in-out;
+
+    .a-icon {
+      width: 10px;
+      color: inherit;
+      font-size: 10px;
+    }
+
+    &--expanded {
+      transition: transform .2s ease-in-out;
+      transform: rotate(180deg);
+    }
+  }
+
+  &__expandable {
+    position: absolute;
+    z-index: map-get($z-index, 'navigation');
+    min-width: 100%;
+    max-height: 0;
+    padding: map-get($spacings, 2) map-get($spacings, 3);
+    color: inherit;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .15); // sass-lint:disable-line no-color-literals
+    visibility: hidden;
+    pointer-events: none;
+
+    .h-background-color--brand-primary & {
+      background-color: $color-text;
+    }
+
+    .h-background-color--brand-secondary & {
+      background-color: $color-brand-secondary;
+    }
+
+    .h-background-color--brand-tertiary & {
+      background-color: $color-brand-tertiary;
+    }
+
+    &,
+    .h-background-color--contrast-primary & {
+      background-color: $color-contrast-primary;
+    }
+
+    .h-background-color--contrast-secondary & {
+      background-color: $color-contrast-secondary;
+    }
+
+    .h-background-color--contrast-tertiary & {
+      background-color: $color-contrast-tertiary;
+    }
+
+    ul {
+      margin: 0; // IE11 fix for alignment
+      padding: 0; // IE11 fix for alignment
+    }
+
+    &--expanded {
+      max-height: 10000px;
+      visibility: visible;
+      cursor: pointer;
+      pointer-events: auto;
+      transform-origin: center top;
+      animation: navigation-list-item-slide .6s;
+    }
+  }
+
+  &__item {
+    &:not(:last-of-type) {
+      padding-bottom: map-get($spacings, 1);
+    }
+
+    a {
+      color: inherit;
+
+      &:hover {
+        text-decoration: none;
+
+        .h-background-color--brand-primary &,
+        .h-background-color--brand-secondary &,
+        .h-background-color--brand-tertiary & {
+          @include fallback-with-fixed-color(color, $color-text-contrast-body-dark, $color-text-contrast-body-dark-fixed);
+        }
+
+        &,
+        .h-background-color--contrast-primary &,
+        .h-background-color--contrast-secondary &,
+        .h-background-color--contrast-tertiary & {
+          @include fallback-with-fixed-color(color, $color-text-light, $color-text-light-fixed);
+        }
+      }
+    }
+  }
+}
+
+.m-switch-nav-inline {
+  display: inline-block;
+  height: $switch-nav-height;
+  font-size: 14px;
+  line-height: $switch-nav-height;
+
+  .h-background-color--brand-primary &,
+  .h-background-color--brand-secondary &,
+  .h-background-color--brand-tertiary & {
+    color: $color-text-contrast-body;
+  }
+
+  &,
+  .h-background-color--contrast-primary &,
+  .h-background-color--contrast-secondary &,
+  .h-background-color--contrast-tertiary & {
+    color: $color-text;
+  }
+
+  &__item {
+    padding: map-get($spacings, 0);
+    padding-right: map-get($spacings, 2);
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__item.notselected {
+    opacity: .56;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}

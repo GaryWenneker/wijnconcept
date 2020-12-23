@@ -1,0 +1,15 @@
+.m-publication-title {
+  margin-top: map-get($spacings, 5);
+
+  &__heading {
+    
+    @include h2;
+    padding-bottom: map-get($spacings, 4);
+  }
+
+  &__date {
+    padding-bottom: map-get($spacings, 1);
+    color: $color-text-brand-heading;
+    font-size: $base-fontsize;
+  }
+}

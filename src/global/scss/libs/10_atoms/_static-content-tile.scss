@@ -1,0 +1,165 @@
+.static-content-tile {
+  @include fallback-with-fixed-color(background, #403e3b, #403e3b);
+  width: 100%; //fallback
+  width: 100vw;
+  // width: 100%;
+  // max-width: 100%;
+  // min-width: 600px;
+  min-height: 100px;
+  margin: 0 auto;
+  padding: 12px;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5; // sass-lint:disable-line no-color-literals
+  border-radius: 3px;
+
+  @keyframes placeHolderShimmer {
+    0% {
+      background-position: -468px 0;
+    }
+
+    100% {
+      background-position: 468px 0;
+    }
+  }
+
+  &__error {
+    background: $color-succes;
+  }
+
+  .name {
+    color: #f8f5f2;
+    font-size: rem(24px);
+    font-family: $header-font;
+    text-shadow: 1px 1px 1px #000;
+  }
+
+  .info {
+    color: #f8f5f2;
+    text-shadow: 1px 1px 1px #000;
+  }
+
+  &.animated-background {
+    position: relative;
+    height: 96px;
+    background: $color-succes;
+    background: linear-gradient(to right, $color-succes 8%, #ff0 18%, $color-succes 33%);  // sass-lint:disable-line no-color-literals
+    background-size: 800px 104px;
+    animation-name: placeHolderShimmer;
+    // sass-lint:disable no-vendor-prefixes no-duplicate-properties
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+  }
+
+  .background-masker {
+    position: absolute;
+    box-sizing: border-box;
+    background: #fff;
+  }
+
+  .outlined .background-masker {
+    border: 1px solid #ddd;  // sass-lint:disable-line no-color-literals
+  }
+
+
+  .outlined:hover .background-masker {
+    border: 0;
+  }
+
+  .outlined:hover .background-masker:hover {
+    z-index: 1;
+    border: 1px solid #ccc; // sass-lint:disable-line no-color-literals
+  }
+
+  .background-masker.header-top,
+  .background-masker.header-bottom,
+  .background-masker.subheader-bottom {
+    top: 0;
+    right: 0;
+    left: 40px;
+    height: 10px;
+  }
+
+  .background-masker.header-left,
+  .background-masker.subheader-left,
+  .background-masker.header-right,
+  .background-masker.subheader-right {
+    top: 10px;
+    left: 40px;
+    width: 10px;
+    height: 8px;
+  }
+
+  .background-masker.header-bottom {
+    top: 18px;
+    height: 6px;
+  }
+
+  .background-masker.subheader-left,
+  .background-masker.subheader-right {
+    top: 24px;
+    height: 6px;
+  }
+
+
+  .background-masker.header-right,
+  .background-masker.subheader-right {
+    right: 0;
+    left: 300px;
+    width: auto;
+  }
+
+  .background-masker.subheader-right {
+    left: 230px;
+  }
+
+  .background-masker.subheader-bottom {
+    top: 30px;
+    height: 10px;
+  }
+
+  .background-masker.content-top,
+  .background-masker.content-second-line,
+  .background-masker.content-third-line,
+  .background-masker.content-second-end,
+  .background-masker.content-third-end,
+  .background-masker.content-first-end {
+    top: 40px;
+    right: 0;
+    left: 0;
+    height: 6px;
+  }
+
+  .background-masker.content-top {
+    height: 20px;
+  }
+
+  .background-masker.content-first-end,
+  .background-masker.content-second-end,
+  .background-masker.content-third-end {
+    top: 60px;
+    right: 0;
+    left: 380px;
+    width: auto;
+    height: 8px;
+  }
+
+  .background-masker.content-second-line {
+    top: 68px;
+  }
+
+  .background-masker.content-second-end {
+    top: 74px;
+    left: 420px;
+  }
+
+  .background-masker.content-third-line {
+    top: 82px;
+  }
+
+  .background-masker.content-third-end {
+    top: 88px;
+    left: 300px;
+  }
+}

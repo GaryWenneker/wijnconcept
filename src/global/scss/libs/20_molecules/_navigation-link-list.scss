@@ -1,0 +1,156 @@
+/* 
+
+  oud spul, kan interessant zijn als Navigation component gebruikt gaat worden
+
+*/
+/* stylelint-disable */
+.m-navigation-link-list {
+  padding: map-get($spacings, 3) 0;
+
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+    height: $base-spacing;
+    margin-right: map-get($spacings, 2);
+
+    .a-icon {
+      height: $base-spacing;
+      color: #403e3b;
+      font-size: $base-spacing;
+
+      &::before {
+        vertical-align: top;
+      }
+    }
+  }
+
+  &__icon-list + .m-navigation-link-list__icon-list {
+    margin-top: map-get($spacings, 1);
+  }
+
+  &__icon-list {
+    display: inline-block;
+
+    @include mq('M') {
+      display: block;
+      font-size: 14px;
+    }
+
+    .m-navigation-link-list__item--title {
+      display: none;
+
+      @include mq('M') {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__title {
+    margin-right: $base-spacing * 1.5;
+    padding-bottom: map-get($spacings, 2);
+    color: #403e3b;
+    font-size: 18px;
+    font-family: $header-font;
+    line-height: 18px;
+  }
+
+  &__no-title {
+    @include mq('M') {
+      min-height: 18px;
+      margin-bottom: map-get($spacings, 2);
+    }
+  }
+
+  &__items {
+    padding: 0;
+    color: #403e3b;
+    list-style-type: none;
+    font-size: rem(14px);
+    line-height: rem(22px);
+  }
+
+  li {
+    a {
+      cursor: pointer;
+
+      &:hover {
+        color: $color-text;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .h-background-color--brand-primary &,
+  .h-background-color--brand-secondary &,
+  .h-background-color--brand-tertiary & {
+    .m-navigation-link-list {
+      &__icon {
+        .a-icon {
+          color: $color-text;
+        }
+      }
+
+      &__title {
+        color: $color-text;
+      }
+
+      &__items {
+        color: $color-text;
+      }
+
+      &__item {
+        margin-bottom: 0;
+
+        a {
+          color: $color-text;
+
+          &:hover {
+            color: $color-text-light;
+          }
+        }
+      }
+    }
+  }
+}
+
+.m-navigation-link-list--horizontal {
+  display: flex;
+  flex-wrap: wrap;
+
+  .m-navigation-link-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+
+    &__items {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 0;
+    }
+
+    &__no-title {
+      @include mq('M') {
+        min-height: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    &__item {
+      display: inline-block;
+      margin-bottom: 15px;
+
+      &:not(:last-child) {
+        margin-right: $base-spacing * 1.5;
+      }
+    }
+
+    &__icon-list + .m-navigation-link-list__icon-list {
+      margin-top: 0;
+    }
+
+    &__icon:only-child {
+      margin-right: 0;
+    }
+  }
+}
+/* stylelint-enable */

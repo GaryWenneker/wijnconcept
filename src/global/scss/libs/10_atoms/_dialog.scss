@@ -1,0 +1,139 @@
+
+.a-modal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999999;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(51, 51, 51, .6);
+  }
+  
+  &__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px 6px 6px;
+    white-space: nowrap;
+  }
+
+  &__content {
+    font-size: rem(16px);
+
+    .overlay-block {
+      margin-bottom: rem(20px);
+      padding: rem(20px);
+      background-color: #f5f3ee;
+      font-size: rem(20px);
+      line-height: 1.5;
+    }
+  }
+}
+
+.a-dialog {
+  position: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999999999;
+  overflow: auto;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 1);
+
+  &__container {
+    background: #fff;
+
+    @include mq('S') {
+      height: auto;
+    }
+
+    @include mq('M') {
+      max-width: 60vw;
+    }
+  }
+
+  &__tooltip {
+    &__content {
+      display: inline;
+      font-weight: 600;
+
+      &.link {
+        text-decoration: underline;
+      }
+
+      .a-icon {
+        margin-left: rem(10px);
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin-right: 50px;
+  }
+
+  &__close {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33px;
+    height: 33px;
+    border: 1px solid #333;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  &__button {
+    margin-top: 30px;
+  }
+
+  &__content {
+    font-size: rem(16px);
+
+    .overlay-block {
+      margin-bottom: rem(20px);
+      padding: rem(20px);
+      background-color: #f5f3ee;
+      font-size: rem(20px);
+      line-height: 1.5;
+    }
+  }
+
+  // &--show {
+  //   display: block;
+  //   animation: a-dialog-scale-start 0.3s ease-in-out forwards;
+  // }
+
+  // &--hide {
+  //   display: none;
+  // }
+}
+
+@keyframes a-dialog-scale-start {
+  0% {
+    opacity: .5;
+    transform: scale(1.15);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

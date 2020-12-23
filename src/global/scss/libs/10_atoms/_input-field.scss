@@ -1,0 +1,173 @@
+/* 
+
+  === deprecated ===
+
+  Wordt gebruikt in Easyflow
+
+  Zou vervangen moeten worden door form standaard zoals die voor de aanvraagstraat is ontwikkeld
+  Zodoende is stylelinting uitgeschakeld voor dit bestand
+
+*/
+
+/* stylelint-disable */
+.a-field {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+
+    @include mq(M) {
+      flex-direction: row;
+      align-items: baseline;
+      margin-right: 49px;
+    }
+
+    &--w-15,
+    &--w-20,
+    &--w-35 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--w-15 {
+      width: 15%;
+      margin-top: 32px;
+    }
+
+    &--w-20 {
+      width: 25%;
+      margin-right: 5px;
+
+      .react-inputs-validation__msg_identifier {
+        position: absolute;
+      }
+    }
+
+    &--w-35 {
+      width: 60%;
+      margin-right: 20px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include mq(M) {
+      flex-direction: row;
+    }
+
+    &-address-input,
+    &-address-output {
+      display: flex;
+    }
+
+    &-address-input {
+      flex-direction: row;
+
+      @include mq(M) {
+        justify-content: flex-start;
+
+        .a-field-input__container {
+          width: 100%;
+        }
+      }
+    }
+
+    &-address-output {
+      flex-direction: column;
+
+      @include mq(M) {
+        order: -1;
+        width: 37%;
+      }
+
+      &--hidden {
+        height: 0;
+        margin-bottom: 0;
+        visibility: hidden;
+
+        @include mq(M) {
+          order: -1;
+          width: 37%;
+        }
+      }
+
+      .a-field__label,
+      .a-field__container {
+        margin-bottom: 0;
+      }
+
+      .a-field__container {
+        display: flex;
+        flex-direction: column;
+        margin-right: 35px;
+      }
+    }
+  }
+
+  &__label {
+    margin-bottom: 10px;
+    font-weight: 600;
+
+    @include mq(M) {
+      width: 40%;
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    &[for=birthDate] {
+      @include mq(M) {
+        align-self: center;
+      }
+    }
+  }
+
+  &-input {
+    &__container {
+      @include mq(M) {
+        width: 60%;
+      }
+    }
+
+    &__input,
+    &__select {
+      width: 100% !important;
+      height: 40px !important;
+      padding: 0 14px !important;
+      border: 1px solid #9b9893;
+      background-color: #fff;
+
+      &::placeholder,
+      &[type='date'] {
+        color: #9b9893;
+        font-weight: 200;
+        font-style: italic;
+      }
+
+      &[type='number']::-webkit-inner-spin-button,
+      &[type='number']::-webkit-outer-spin-button,
+      &[type='date']::-webkit-inner-spin-button,
+      &[type='date']::-webkit-outer-spin-button,
+      &[type='date' i] {
+        margin: 0;
+        appearance: none;
+      }
+
+      &--text-only {
+        width: 100%;
+        border: 0;
+        background: transparent;
+        color: #000;
+        font-family: inherit;
+
+        @include mq(M) {
+          width: auto;
+        }
+      }
+    }
+  }
+}
+/* stylelint-enable */

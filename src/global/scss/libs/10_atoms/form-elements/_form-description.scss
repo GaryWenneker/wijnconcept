@@ -1,0 +1,21 @@
+.a-form-description {
+  @include rich-text;
+  margin-top: 1em;
+  font-size: 14px;
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  &--checkbox {
+    padding-left: 42px;
+
+    [class*='a-list'] + & {
+      margin-top: 0;
+    }
+  }
+}

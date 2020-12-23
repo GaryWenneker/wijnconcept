@@ -1,0 +1,161 @@
+@mixin h1 {
+  @include set-font(
+    $font-size: 33px,
+    $line-height: 1.333,
+    $font-size-desktop: 44px,
+    $line-height-desktop: 1.25
+  );
+}
+
+@mixin mh2 {
+  @include mq('M-max') {
+    @include set-font(
+      $font-size: 28px,
+      $line-height: 1.179
+    );
+  }
+}
+
+@mixin h2 {
+  @include set-font(
+    $font-size: 28px,
+    $line-height: 1.179,
+    $font-size-desktop: 38px,
+    $line-height-desktop: 1.158
+  );
+}
+
+@mixin h3 {
+  @include set-font(
+    $font-size: 24px, 
+    $line-height: 1.375
+  );
+}
+
+@mixin h4 {
+  @include set-font(
+    $font-size: 20px, 
+    $line-height: 1.1
+  );
+}
+
+@mixin h5 {
+  @include set-font(
+    $font-size: 18px, 
+    $line-height: 1.1, 
+    $font-weight: bold
+  );
+}
+
+@mixin h6 {
+  @include set-font(
+    $font-size: 16px, 
+    $line-height: 1.1, 
+    $font-weight: bold
+  );
+}
+
+h1, .h1.h1, %h1 {
+  @include h1;
+  margin: 0 0 22px;
+}
+
+h2, .h2.h2, %h2 {
+  @include h2;
+  margin: 0 0 22px;
+}
+
+.mh2, %mh2 {
+  @include mh2;
+}
+
+h3, .h3.h3, %h3 {
+  @include h3;
+  margin: 0 0 16px;
+}
+
+h4, .h4.h4, %h4 {
+  @include h4;
+  margin: 0 0 11px;
+}
+
+/*
+
+  font-weight is apart gezet zodat .h# een lagere specificity
+  kan hebben voor gebruik in de bestaande/oude site, m.a.w.
+  zodat daar een standaard header bold kan blijven
+
+ */
+h1, .h1, %h1, h2, .h2, %h2, h3, .h3, %h3, h4, .h4, %h4 {
+  font-weight: normal;
+}
+
+h5, .h5, %h5, h6, .h6, %h6 {
+  margin: 0 0 11px;
+  font-weight: bold;
+  font-size: $base-fontsize;
+}
+
+/* 
+
+  voor backwards compatibiliteit met bestaande/oude site
+  Als de oude omgeving niet meer van toepassing is
+  kan deze regel verwijderd worden
+
+*/
+
+/* stylelint-disable selector-no-qualifying-type */
+h1[class^='e-'],
+[class^='e-'] > * > h1,
+h2[class^='e-'],
+[class^='e-'] > * > h2,
+h3[class^='e-'],
+[class^='e-'] > * > h3,
+h4[class^='e-'],
+[class^='e-'] > * > h4,
+h5[class^='e-'],
+[class^='e-'] > * > h5,
+h6[class^='e-'],
+[class^='e-'] > * > h6, {
+  margin: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+/* stylelint-enable selector-no-qualifying-type */
+
+[class^='c-'], [class^='e-'] {
+  > h1, > h2, > h3, > h4 {
+    &:not([class]) {
+      font-weight: bold;
+    }
+  }
+}
+
+a {
+  color: currentColor;
+  cursor: pointer;
+  transition: .12s linear;
+
+  &:not([class]) {
+    text-decoration: underline;
+
+    &:hover, &:active, &:focus {
+      opacity: .8;
+    }
+
+    /* 
+
+      voor backwards compatibiliteit met bestaande site
+      wordt de underline voor directe kinderen van 
+      classnames die beginnen met "e-" of "c-" weggehaald.
+      Als de oude omgeving niet meer van toepassing is
+      kan deze regel verwijderd worden
+
+    */
+
+    [class^='e-']:not(p) > &,
+    [class^='c-']:not(p) > & {
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+// .a-link is nice for use on a button as an inline link thingie
+.a-link,
+.a-backlink,
+.a-forwardlink {
+  display: inline-block;
+  min-height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: currentColor;
+  font-weight: $a-link-font-weight;
+  text-align: left;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: .12s linear;
+  appearance: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: .8;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &::before {
+    font-size: 1.2em;
+    text-decoration: none;
+  }
+}
+
+.a-backlink,
+.a-forwardlink {
+  @include webfont-icon($name: '22-system-chevron-back');
+
+  &::before {
+    margin: -1px 4px 0 -6px;
+    font-weight: bold;
+  }
+}
+
+.a-forwardlink {
+  @include webfont-icon($name: '22-system-chevron-forward');
+
+  &::before {
+    float: right;
+    margin: 1px 0 0 2px;
+    font-weight: bold;
+  }
+}

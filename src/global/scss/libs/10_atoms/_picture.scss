@@ -1,0 +1,22 @@
+.a-picture {
+  position: relative;
+  overflow: hidden;
+
+  &__ratio {
+    display: block;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 100%;
+    margin: auto;
+  }
+}

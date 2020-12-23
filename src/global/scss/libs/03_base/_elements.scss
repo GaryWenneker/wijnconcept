@@ -1,0 +1,121 @@
+html {
+  color: $color-text;
+  font-weight: $default-font-weight;
+  font-size: $base-fontsize;
+  font-family: $default-font;
+  //   // sass-lint:disable no-vendor-prefixes
+  line-height: $base-lineheight;
+  // remove iOS highlight on touch
+  -webkit-tap-highlight-color: transparent;
+  //   -ms-text-size-adjust: 100%;
+  //   -webkit-text-size-adjust: 100%;
+  //   -moz-osx-font-smoothing: grayscale;
+  //   -webkit-font-smoothing: antialiased;
+  //   width: initial;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+// header {
+//   //background-color: #fff;
+// }
+
+body {
+  // overflow-x: hidden;
+  // position: relative;
+  color: $color-text;
+
+  // avoid troubles w integrated browser in app
+  &:not(.is-onvz-app) {
+    overflow-y: scroll;
+  }
+}
+
+::selection {
+  background-color: fnColor(5);
+  color: #fff;
+  text-shadow: none;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+p {
+  margin: 0; // parity with old styling, rich text does add margin
+}
+
+// form elements with text
+/* stylelint-disable selector-no-qualifying-type */
+input:not([type]),
+[type='text'],
+[type='date'],
+[type='number'],
+[type='tel'],
+[type='email'],
+[type='file'],
+[type='password'],
+[type='search'],
+[type='url'],
+select,
+optgroup,
+textarea {
+  display: inline-flex;
+  width: inherit;
+  width: 100%;
+  min-height: $form-element-height;
+  padding: 7px map-get($spacings, 1);
+  border: 1px solid $elements-form-border-color;
+  border-radius: 1px;
+  background-color: #fff;
+  color: $color-text;
+  box-shadow: none;
+  outline: 0;
+  font-weight: normal;
+  font-size: $base-fontsize;
+  font-family: inherit;
+  line-height: $base-lineheight;
+  cursor: pointer;
+  transition: border-color .1s linear, box-shadow .1s linear;
+  appearance: none;
+
+  &:focus, &:hover {
+    border-color: $elements-form-border-color-active;
+    box-shadow: $elements-form-box-shadow;
+  }
+
+  &::placeholder {
+    color: $elements-form-placeholder-color;
+    font-style: italic;
+  }
+
+  &.is-invalid {
+    border-color: $color-danger;
+  }
+}
+/* stylelint-enable */
+
+textarea {
+  display: block;
+}
+
+option:disabled, .disabled {
+  color: $elements-form-placeholder-color;
+  font-style: italic;
+}
+
+.rich-text { // Rich text from Sitecore
+  padding-top: $grid-spacing * 4;
+  padding-bottom: $grid-spacing * 4;
+}
+
+label {
+  word-break: break-word; // deprecated: for Safari, mostly
+  overflow-wrap: anywhere;
+}

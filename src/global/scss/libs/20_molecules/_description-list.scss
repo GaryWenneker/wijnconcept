@@ -1,0 +1,25 @@
+.m-description-list {
+  + .m-description-list {
+    margin-top: $base-spacing;
+  }
+
+  &__heading {
+    margin-top: 0;
+    margin-bottom: map-get($spacings, 1);
+  }
+
+  &__item {
+    display: flex;
+    padding: 5px 0;
+    border-bottom: 1px solid $color-text;
+  }
+
+  &__item__name {
+    flex: 1;
+  }
+
+  &__item__value {
+    flex: 1;
+    text-align: right;
+  }
+}

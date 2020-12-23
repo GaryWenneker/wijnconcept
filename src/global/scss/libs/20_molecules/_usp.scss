@@ -1,0 +1,55 @@
+.m-usp {
+  @include fallback-with-fixed-color(color, #403e3b, #403e3b);
+  display: flex;
+  justify-content: space-between;
+  margin-right: (- map-get($spacings, 1));
+  margin-left: (- map-get($spacings, 1));
+  padding-top: rem(28px);
+  padding-bottom: rem(28px);
+  font-size: rem(14px);
+  line-height: 18px;
+
+  @include mq('L') {
+    margin-right: (- map-get($spacings, 3));
+    margin-left: (- map-get($spacings, 3));
+  }
+
+  .a-icon {
+    @include fallback-with-fixed-color(color, #403e3b, #403e3b);
+    margin-top: 5px;
+    margin-right: 5px;
+    font-size: rem(14px);
+  }
+
+  .o-header & {
+    display: none;
+    @include mq('M') {
+      display: flex;
+
+      &::after {
+        @include fallback-with-fixed-color(background-color, #F5F3EE, #F5F3EE);
+        content: '';
+        position: absolute;
+        right: 0;
+        left: 0;
+        height: 1px;
+        transform: translateY(-28px);
+      }
+
+      &__item {
+        position: relative;
+        margin-right: (map-get($spacings, 1));
+        margin-left: (map-get($spacings, 1));
+        padding-left: 21px;
+        @include mq('L') {
+          margin-right: (map-get($spacings, 3));
+          margin-left: (map-get($spacings, 3));
+        }
+      }
+
+      &__item:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+}

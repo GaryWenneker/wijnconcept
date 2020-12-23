@@ -1,0 +1,91 @@
+/* stylelint-disable max-nesting-depth, selector-max-compound-selectors */
+.m-table {
+  width: 100%;
+  max-width: 445px;
+
+  &:not(:first-child) {
+    margin-top: 30px;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  th {
+    padding-bottom: 10px;
+    color: $m-table-th-color; // only for PNO
+    text-align: left;
+  }
+
+  em {
+    white-space: nowrap;
+  }
+
+  small {
+    margin-left: .5em;
+    font-weight: normal;
+    font-size: 1em;
+    opacity: $m-table-small-opacity;
+  }
+
+  tfoot {
+    color: $m-table-footer-color; // only for PNO
+
+    tr:first-child {
+      td, th {
+        padding-top: 30px;
+        background-image: $m-table-footer-separator-line;
+      }        
+    }
+
+    .m-table__price {
+      font-weight: bold;
+    }
+  }
+
+  &__header {
+    tbody + tbody &:first-child,
+    &:not(:first-child) {
+      td, th {
+        padding-top: 30px;
+      }
+    }
+  }
+
+  &__price {
+    vertical-align: top;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  // more vertical space variant of table
+  &--vspace {
+    tfoot {
+      tr {
+        &:first-child {
+          td, th {
+            padding-top: 40px;
+          }
+        }
+    
+        &:last-child {
+          td, th {
+            padding-bottom: 0; 
+          }
+        }  
+      }          
+    }
+  }
+}
+
+// only for PNO
+.m-form__section--dark {
+  tfoot {
+    tr:first-child {
+      td, th {
+        background-image: $m-table-footer-dark-separator-line;
+      }        
+    }
+  }
+}
+/* stylelint-enable max-nesting-depth, selector-max-compound-selectors */

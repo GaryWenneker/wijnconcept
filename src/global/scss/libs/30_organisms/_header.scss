@@ -1,0 +1,162 @@
+.o-page-header {
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  &__col {
+    padding: 15px;
+
+    &:nth-child(2) {
+      // for getting the HelpButton behind PrimaryNavigation
+      padding: 0;
+
+      .placeholder__container {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+
+    @include mq('XL') {
+      display: flex;
+      align-items: center;
+      padding: 20px ($grid-spacing * 2);
+    }
+  }
+
+  &__inner-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  @include mq('XL') {
+    // Mask to hide box-shadow corners
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      background: white;
+      width: 5px;
+      height: 20px;
+      bottom: -5px;
+    }
+
+    &:after {
+      left: -5px;
+    }
+
+    &:before {
+      right: -5px;
+    }
+  }
+
+  .m-primary-navigation {
+    display: flex;
+    color: white;
+
+    &__item {
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      margin: 16px 0px;
+      font-family: Lato;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      padding: 0 10px;
+
+      a {
+          text-decoration: none;
+      }
+    }
+
+    &__item--active & {
+      @include mq('XL') {
+        display: flex;
+        transition: opacity 0.2s 0s;
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.o-header-bottom {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+
+  @include mq('M') {
+    .m-country-selector {
+      display: none;
+    }
+  }
+
+  &__col {
+    padding: 15px;
+
+    &:nth-child(2) {
+      // for getting the HelpButton behind PrimaryNavigation
+      padding: 0;
+
+      .placeholder__container {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+
+    @include mq('XL') {
+      display: flex;
+      align-items: center;
+      padding: 20px ($grid-spacing * 2);
+    }
+  }
+
+  &__inner-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__account__button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 24px;
+    color: white;
+    position: static;
+    width: 139px;
+    height: 52px;
+    left: 0px;
+    top: 2px;
+
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+  }
+
+  @include mq('XL') {
+    // Mask to hide box-shadow corners
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      background: white;
+      width: 5px;
+      height: 20px;
+      bottom: -5px;
+    }
+
+    &:after {
+      left: -5px;
+    }
+
+    &:before {
+      right: -5px;
+    }
+  }
+}

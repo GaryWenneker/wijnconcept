@@ -1,0 +1,56 @@
+// sass-lint:disable-all
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display:wght@700&display=swap');
+
+// primary font
+$font-primary-name: 'Merriweather';
+$font-primary-stack: $font-primary-name, 'Arial', 'Helvetica', sans-serif;
+$font-primary-feature-settings: 'kern' 1, 'calt' 0; // Kern, but don't display glyph alternates
+$font-primary-cleanname: 'Merriweather';
+$font-primary-filename: $font-primary-cleanname + '-v5-latin-';
+$font-primary-path: '/static/fonts/' + $font-primary-cleanname + '/';
+$font-primary-weights: (
+  ultralight: (weight: 200, style: normal),
+  light: (weight: 300, style: normal),
+  bold: (weight: 700, style: normal),
+);
+
+// create primary @font-face
+@each $weight in map-keys($font-primary-weights) {
+  @if not (map-get($font-primary-weights, $weight)) {
+    @error 'Variant "' + $weight + '" not found in "' + $font-primary-name + '" definition.';
+  }
+
+  /* stylelint-disable-next-line order/order */
+  $properties: map-get($font-primary-weights, $weight);
+  $font-style: map-get($properties, style);
+  $font-weight: map-get($properties, weight);
+
+  @font-face {
+    font-weight: $font-weight;
+    font-style: $font-style;
+    font-size-adjust: initial;
+    font-family: $font-primary-name;
+    src: url($font-primary-path + $font-primary-filename + $font-weight + '.woff2') format('woff2'), url($font-primary-path + $font-primary-filename + $font-weight + '.woff') format('woff');
+    text-rendering: optimizeLegibility;
+    font-feature-settings: $font-primary-feature-settings;
+  }
+}
+
+// primary font weight mapping
+// used for converting font weight name to actual available font weights
+$font-primary-weight-mapping: (
+  ultralight: (weight: 200, style: normal),
+  extralight: (weight: 200, style: normal),
+  light: (weight: 200, style: normal),
+  light-italic: (weight: 200, style: italic),
+  normal: (weight: 300, style: normal),
+  regular: (weight: 300, style: normal),
+  italic: (weight: 300, style: italic),
+  semibold: (weight: 700, style: normal),
+  demibold: (weight: 700, style: normal),
+  bold: (weight: 700, style: normal),
+  extrabold: (weight: 700, style: normal), 
+  black: (weight: 700, style: normal),
+  heavy: (weight: 700, style: normal),
+);

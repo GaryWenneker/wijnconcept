@@ -1,0 +1,192 @@
+.a-form-choice {
+  display: grid;
+  grid-template-areas: 'check text icon'
+    'check addition addition';
+  grid-template-columns: min-content auto min-content;
+  width: 100%;
+  min-height: $form-element-height;
+  border: 1px solid currentColor;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color .12s linear, border-color .12s linear;
+  -ms-grid-columns: min-content auto min-content;
+  -ms-grid-rows: min-content min-content;
+
+  @include mq('S') {
+    grid-template-areas: 'check text  addition icon';
+    grid-template-columns: min-content auto auto min-content;
+    -ms-grid-columns: min-content auto auto min-content;
+    -ms-grid-rows: min-content;
+  }
+
+  // add checkbox or radio marker
+  &__mark.a-icon {
+    display: flex;
+    grid-area: check;
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 16px;
+    height: 16px;
+    margin: 10px 0 0 15px;
+    border: 1px solid currentColor;
+    transition: background-color .12s linear, border-color .12s linear, border-color .12s linear;
+    -ms-grid-row-span: 2;
+
+    &::before {
+      color: $color-succes;
+      font-size: 19px;
+      transition: transform .15s cubic-bezier(.5, 1.5, .74, 1);
+      transform: translateY(20px);
+    }
+  }
+
+  // change checkbox icon to radio when needed
+  [type='radio'] + & {
+    .a-form-choice__mark {
+      border-radius: 50%;
+
+      &::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        margin-top: 2px;
+        border-radius: 50%;
+        background-color: $color-succes;
+      }
+    }
+  }
+  // states
+  :checked + & {
+    border-color: #fff;
+
+    .a-form-choice__mark::before {
+      transform: translateY(-1px);
+    }
+  }
+
+  &:hover, &:focus {
+    border-color: currentColor;
+  }
+
+  &:hover, &:focus, :checked + & {
+    background-color: #fff;
+    box-shadow: $elements-form-box-shadow;
+
+    .a-form-choice__mark {
+      border-color: $color-text;
+    }
+  }
+
+  &--not-selected {
+    border-color: fnColor(6);
+
+    .a-form-choice__mark {
+      border-color: fnColor(6);
+    }
+  }
+
+  &.is-invalid .a-form-choice__mark {
+    border-color: $color-danger;
+  }
+
+  //
+  // input variant zonder kader en met grotere checkbox/radio
+  //
+  &--plain {
+    padding: 1px;
+    border: 0;
+
+    &:hover, &:focus, :checked + & {
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    &:hover, &:focus {
+      .a-form-choice__mark {
+        box-shadow: $elements-form-box-shadow;
+      }
+    }
+
+    .a-form-choice__mark {
+      width: 24px;
+      height: 24px;
+      margin: 6px 0 0 -1px;
+      background-color: #fff;
+
+      &::before {
+        font-size: 22px;
+
+        /* stylelint-disable-next-line max-nesting-depth */
+        [type='radio'] + & {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+
+    .a-form-choice__text {
+      padding-left: 18px;
+    }
+  }
+
+  // text blocks
+  &__text, &__addition {
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+    > :first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__text {
+    grid-area: text;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    padding: 7px map-get($spacings, 1) 7px 10px;
+  }
+
+  &__addition {
+    grid-area: addition;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    padding: 0 map-get($spacings, 1) 7px 10px;
+    text-align: right;
+    -ms-grid-column-span: 2;
+
+    @include mq('S') {
+      -ms-grid-row: 1;
+      -ms-grid-column: 3;
+      padding-top: 7px;
+      -ms-grid-column-span: 1;
+    }
+  }
+
+  // icon rechts aan het einde van de box
+  &__decoration {
+    grid-area: icon;
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+    margin: 3px 10px 0 -7px;
+
+    @include mq('S') {
+      -ms-grid-column: 4;
+    }
+
+    &::before {
+      font-size: 28px;
+    }
+  }
+
+  &__before {
+    margin-bottom: 6px;
+  }
+
+  &__after {
+    margin-top: 6px;
+  }
+}

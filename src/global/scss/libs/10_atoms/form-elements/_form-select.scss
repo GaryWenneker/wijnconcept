@@ -1,0 +1,23 @@
+.a-form-select {
+  position: relative;
+
+  select {
+    padding-right: $form-element-height;
+  }
+
+  &__icon.a-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $form-element-height;
+    color: #000;
+    line-height: $form-element-height;
+    text-align: center;
+    cursor: pointer;
+    pointer-events: none;
+
+    &::before {
+      transform: scale(1.5) translateY(-1px);
+    }
+  }
+}

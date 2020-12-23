@@ -1,0 +1,61 @@
+// Font mixin whereby you can use the real font weights, such as 'book' or 'black'.
+@mixin set-font(
+  $font-family: null,
+  $font-size: null,
+  $font-size-desktop: null,
+  $line-height: null,
+  $line-height-desktop: null,
+  $font-weight: null,
+  $font-style: null,
+  $letter-spacing: null,
+  $text-transform: null
+) {
+
+  // Include styles if given
+
+  @if ($font-family) {
+    font-family: $font-family;
+  }
+
+  @if ($font-size) {
+    font-size: $font-size;
+  }
+
+  @if ($font-style) {
+    font-style: $font-style;
+  }
+
+  @if ($font-weight) {
+    @if variable-exists(font-primary-weight-mapping) {
+      font-weight: get-font-weight($font-weight, $font-primary-weight-mapping);
+    } @else {
+      font-weight: get-font-weight($font-weight);
+    }
+    font-weight: $font-weight;
+  }
+
+  @if ($line-height) {
+    line-height: $line-height;
+  }
+
+  @if ($letter-spacing) {
+    letter-spacing: $letter-spacing;
+  }
+
+  @if ($text-transform) {
+    text-transform: $text-transform;
+  }
+
+  @if ($font-size-desktop or $line-height-desktop) {
+    @include mq('M') {
+
+      @if ($font-size-desktop) {
+        font-size: $font-size-desktop;
+      }
+        
+      @if ($line-height-desktop) {
+        line-height: $line-height-desktop;
+      }
+    }
+  }
+}

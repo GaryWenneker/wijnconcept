@@ -1,0 +1,101 @@
+.m-carousel {
+  display: block;
+  width: 100%;
+
+  &__block {
+    display: block;
+    width: 100%;
+    padding: 0;
+    background-color: #fff;
+    text-align: center;
+
+    @include mq('M') {
+      @include fallback-with-fixed-color(border-color, #F5F3EE, #F5F3EE);
+      padding-bottom: map-get($spacings, 3);
+      border: solid 1px transparent;
+
+      img {
+        margin: auto;
+      }
+    }
+
+    img {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%; // temp. we should always have correct size images
+      max-width: 100%;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__disclaimer {
+    @include fallback-with-fixed-color(color, #403e3b, #403e3b);
+    padding-top: map-get($spacings, 3);
+    font-size: rem(11px);
+    text-align: left;
+
+    @include mq('M') {
+      margin-left: map-get($spacings, 3);
+      font-size: rem(13px);
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: map-get($spacings, 3);
+    line-height: rem(17px);
+
+    @include mq('M') {
+      padding-right: map-get($spacings, 3);
+      padding-left: map-get($spacings, 3);
+    }
+
+    .inactive {
+      .a-icon {
+        @include fallback-with-fixed-color(color, #403e3b, #403e3b);
+        opacity: .5;
+        cursor: default;
+      }
+    }
+
+    .a-icon {
+      @include fallback-with-fixed-color(color, #403e3b, #403e3b);
+      position: relative;
+      vertical-align: top;
+      width: rem(10px);
+      height: rem(17px);
+      cursor: pointer;
+      transition: all .3s ease 0s; // sass-lint:disable-line no-transition-all
+
+      &::before {
+        vertical-align: top;
+      }
+
+      &:hover {
+        @include fallback-with-fixed-color(color, #403e3b, #403e3b);
+      }
+    }
+  }
+
+  &__image-number {
+    @include fallback-with-fixed-color(color, #403e3b, #403e3b);
+    position: relative;
+    width: rem(32px);
+    height: rem(17px);
+    margin-right: map-get($spacings, 1);
+    margin-left: map-get($spacings, 1);
+    padding: 0;
+    font-size: rem(14px);
+    white-space: nowrap;
+
+    @include mq('M') {
+      font-size: $base-fontsize;
+    }
+  }
+}

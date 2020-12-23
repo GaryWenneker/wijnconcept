@@ -1,0 +1,132 @@
+/* 
+
+  Wordt dit gebruikt?
+
+*/
+$a-radio-checked-color: #6e6350 !default;
+$a-radio-hover-color: #6e6350 !default;
+
+.a-radio-input {
+  @include fallback-with-fixed-color(color, #403e3b, #403e3b);
+  font-size: $base-fontsize;
+  line-height: 2;
+
+  @include mq('M') {
+    font-size: rem(18px);
+  }
+
+  &__block {
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      .a-radio-input__label {
+        color: #000;
+      }
+
+      .a-radio-input__styled-input {
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, .1);
+      }
+    }
+
+    &:active {
+      .a-radio-input__styled-input {
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, .1);
+      }
+    }
+  }
+
+  &__styled-input {
+    position: absolute;
+    top: 50%;
+    width: rem(17px);
+    height: rem(17px);
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  &__input-hidden {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked + .a-radio-input__input-visible,
+    &[checked] + .a-radio-input__input-visible {
+      border: 3px solid #f8f5f2;
+      background-color: $a-radio-checked-color;
+      box-shadow: 0 0 0 1px $color-text;
+    }
+  }
+
+  &__input-visible {
+    @include fallback-with-fixed-color(box-shadow, 0 0 0 1px #403e3b, 0 0 0 1px #403e3b);
+    display: block;
+    height: 100%;
+    border: 3px solid #f8f5f2;
+    border-radius: 50%;
+    background-color: #f8f5f2;
+    transition: border-color .3s, background-color .3s, box-shadow .3s;
+  }
+
+  &__label {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: (map-get($spacings, 5) / 2);
+    white-space: nowrap;
+    cursor: pointer;
+
+    @include mq('M') {
+      padding-left: rem(35px);
+    }
+  }
+
+}
+
+.a-radio-buttons {
+  @include fallback-with-fixed-color(color, #403e3b, #403e3b);
+  display: flex;
+  flex-flow: wrap;
+  font-size: $base-fontsize;
+
+  &__input-hidden {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked + .a-radio-buttons__input-visible,
+    &[checked] + .a-radio-buttons__input-visible {
+      border-color: $a-radio-checked-color;
+      color: $a-radio-checked-color;
+    }
+  }
+
+  &__input-visible {
+    @include fallback-with-fixed-color(border, 2px solid #403e3b, 2px solid #403e3b);
+    display: table;
+    margin: (map-get($spacings, 1) / 2) (map-get($spacings, 1)) (map-get($spacings, 1) / 2) 0;
+    line-height: rem(25px);
+    white-space: nowrap;
+    transition: border-color .3s, background-color .3s;
+
+    &:hover {
+      border-color: $a-radio-hover-color;
+      color: $a-radio-hover-color;
+    }
+  }
+
+  &__label {
+    display: table-cell;
+    vertical-align: middle;
+    margin: auto 0;
+    padding: map-get($spacings, 1);
+    padding-right: map-get($spacings, 3);
+    padding-left: map-get($spacings, 3);
+    cursor: pointer;
+  }
+}

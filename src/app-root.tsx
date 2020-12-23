@@ -80,7 +80,7 @@ export class AppRoot {
             <stencil-route component="not-found" />
           </stencil-route-switch>
         </stencil-router>
-        <app-footer />
+        {/* <app-footer /> */}
       </Host>
     );
   }

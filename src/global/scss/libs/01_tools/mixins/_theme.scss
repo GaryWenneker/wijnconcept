@@ -1,0 +1,57 @@
+//
+// theme properties mixin
+//
+// set properties for theme placeholders and helper classes
+// using theme functions for values
+// values of null will result in no css output for that declaration
+// bg and text colors are set to !important
+// but this can be overruled (maybe for theme placeholders?)
+//
+@mixin mxThemeProperties($bg, $text, $header, $link, $hover, $active, $important: true) {
+  @if ($important) {
+    /* stylelint-disable-next-line declaration-no-important */
+    background-color: $bg !important;
+    /* stylelint-disable-next-line declaration-no-important */
+    color: $text !important;
+  } @else {
+    background-color: $bg;
+    color: $text;
+  }
+
+  h1,
+  .h1,
+  %h1,
+  h2,
+  .h2,
+  %h2,
+  h3,
+  .h3,
+  %h3 {
+    color: $header;
+  }
+
+  a:not([class*='a-btn']),
+  .a-link,
+  .a-forwardlink {
+    @if ($hover) {
+      // don't change opacity when a specific hover color is set
+      &:not([class]) {
+        &:hover, &:focus, &:active {
+          opacity: 1;
+        }
+      }
+    }
+
+    &, &:link, &:visited {
+      color: $link;
+    }
+
+    &:hover, &:focus, &:active {
+      color: $hover;
+    }
+
+    &:active {
+      color: $active;
+    }
+  }
+}

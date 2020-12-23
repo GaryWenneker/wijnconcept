@@ -1,0 +1,48 @@
+/* 
+
+  TODO: refactor om important te verwijderen.
+  is dit nog wel nodig?
+
+*/
+/* stylelint-disable declaration-no-important */
+.unsupported-browser {
+  padding: 0 12px;
+  border: 4px solid fnColor(7);
+  background: #fff;
+  line-height: 1.5;
+
+  .flex-md-row {
+    flex-direction: row !important;
+  }
+
+  .flex-auto {
+    flex: auto !important;
+  }
+
+  .d-flex {
+    display: flex !important;
+  }
+
+  .flex-items-center {
+    align-items: center !important;
+  }
+
+  .container-lg,
+  container-xl {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .container-lg {
+    max-width: 1012px;
+  }
+
+  .min-width-0 {
+    min-width: 0 !important;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+/* stylelint-enable declaration-no-important */

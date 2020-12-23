@@ -1,0 +1,86 @@
+@mixin btn-base(
+  $border-radius: 0,
+  $font-weight: normal,
+  $font-family: $default-font,
+  $font-size: $base-fontsize,
+  $height: $form-element-height,
+  $horizontal-padding: 25px
+) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1px; // = hack voor IE11
+  min-height: $height;
+  padding: 0 $horizontal-padding;
+  border: 1px solid currentColor;
+  border-radius: $border-radius;
+  font-weight: $font-weight;
+  font-size: $font-size;
+  font-family: $font-family;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: .12s linear, outline 0s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &[class*='disabled'], &[disabled] {
+    opacity: .5;
+    cursor: default;
+    pointer-events: none; // this does not disable keyboard input
+  }
+}
+
+@mixin btn-colors(
+  $background-color: fnColor(2),
+  $border-color: fnColor(2),
+  $color: fnColor(4),
+  $hover-background: null,
+  $hover-border: null,
+  $hover-color: null,
+  $active-background: null,
+  $active-border: null,
+  $active-color: null
+) {
+  border-color: $border-color;
+  background-color: $background-color;
+  color: $color;
+
+  &:hover, &:focus {
+    &:not([disabled]), &:not([class*='disabled']) {
+      border-color: $hover-border;
+      background-color: $hover-background;
+      color: $hover-color;
+    }
+  }
+
+  &:active {
+    &:not([disabled]), &:not([class*='disabled']) {
+      border-color: $active-border;
+      background-color: $active-background;
+      color: $active-color;
+    }
+  }
+
+  &:link,
+  &:visited,
+  &[class*='disabled'],
+  &[disabled] {
+    color: $color;
+  }
+
+  /* @if ($hover-border) {
+    &:focus:not(:hover) {
+      outline: 1px solid $border-color;
+    }
+  } @else {
+    &:focus:not(:hover) {
+      outline: 1px solid currentColor;
+    }
+  } */
+}

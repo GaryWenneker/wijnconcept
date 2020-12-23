@@ -1,0 +1,86 @@
+// generic list of things either horizontal or vertical, does not wrap
+.a-list-bar, .a-list-stack {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    display: flex;
+    flex: 1 0;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// generic horizontal crap
+.a-list-bar {
+  flex-wrap: wrap;
+
+  // small spacing (10px) between items
+  &--s {
+    margin: 0 -5px -6px;
+
+    .a-list-bar__item {
+      padding: 0 5px 6px;
+    }
+  }
+
+  &--nowrap {
+    flex-wrap: nowrap;
+  }
+}
+
+// generic vertical crap
+.a-list-stack {
+  flex-direction: column;
+
+  // 6px gap is very specific to forms...
+  &--form &__item:not(:first-child) {
+    padding-top: 6px;
+  }
+}
+
+//
+// old stuff alleen gebruikt in Hero(?)
+//
+/* .a-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    position: relative;
+    min-height: 2em;
+    margin-left: 0;
+    padding-left: 40px;
+    line-height: 1.7em;
+  }
+  
+  &--checked {
+    margin-bottom: 2em;
+    
+    > li {
+      @include webfont-icon-after('check');
+
+      &::after {
+        position: absolute;
+        top: .51em;
+        left: 15px;
+        display: block;
+        color: $color-brand;
+        font-size: 13px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        line-height: 1.7em;
+      }
+    } 
+  }
+} */

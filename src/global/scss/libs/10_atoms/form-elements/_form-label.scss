@@ -1,0 +1,17 @@
+.a-form-label {
+  display: inline-block;
+  min-height: $form-element-height;
+  padding: 9px 10px 10px 0;
+  font-weight: bold;
+  font-size: $base-fontsize;
+
+  @include mq('M') {
+    padding-bottom: 7px;
+  }
+
+  i {
+    font-weight: $default-font-weight;
+    font-style: italic;
+  }
+
+}

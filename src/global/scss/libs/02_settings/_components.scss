@@ -1,0 +1,143 @@
+//
+// all vars to customize components per theme/brand
+//
+
+// 03 base / elements
+$elements-form-border-color: fnColor(6) !default;
+$elements-form-border-color-active: fnColor(4) !default;
+$elements-form-placeholder-color: fnColor(6) !default;
+$elements-form-box-shadow: null !default;
+
+// 10 atoms / buttons
+$a-btn-font-weight: null !default;
+
+$a-btn-primary-background-color: fnColor(2) !default;
+$a-btn-primary-border-color: fnColor(2) !default;
+$a-btn-primary-color: fnColor(4) !default;
+$a-btn-primary-hover-background: fnColor(4) !default;
+$a-btn-primary-hover-border: fnColor(4) !default;
+$a-btn-primary-hover-color: fnColor(0) !default;
+$a-btn-primary-active-background: fnColor(5) !default;
+$a-btn-primary-active-border: fnColor(5) !default;
+$a-btn-primary-active-color: fnColor(0) !default;
+
+$a-btn-secondary-background-color: transparent !default;
+$a-btn-secondary-border-color: currentColor !default;
+$a-btn-secondary-color: currentColor !default;
+$a-btn-secondary-hover-background: fnColor(4) !default;
+$a-btn-secondary-hover-border: fnColor(4) !default;
+$a-btn-secondary-hover-color: fnColor(0) !default;
+$a-btn-secondary-active-background: fnColor(5) !default;
+$a-btn-secondary-active-border: fnColor(5) !default;
+$a-btn-secondary-active-color: fnColor(0) !default;
+
+$a-btn-primary-outline-background-color: transparent !default;
+$a-btn-primary-outline-border-color: fnColor(2) !default;
+$a-btn-primary-outline-color: fnColor(2) !default;
+$a-btn-primary-outline-hover-background: fnColor(4) !default;
+$a-btn-primary-outline-hover-border: fnColor(4) !default;
+$a-btn-primary-outline-hover-color: fnColor(0) !default;
+$a-btn-primary-outline-active-background: fnColor(5) !default;
+$a-btn-primary-outline-active-border: fnColor(5) !default;
+$a-btn-primary-outline-active-color: fnColor(0) !default;
+
+$a-btn-succes-outline-background-color: transparent !default;
+$a-btn-succes-outline-border-color: fnColor(10) !default;
+$a-btn-succes-outline-color: fnColor(10) !default;
+$a-btn-succes-outline-hover-background: fnColor(4) !default;
+$a-btn-succes-outline-hover-border: fnColor(4) !default;
+$a-btn-succes-outline-hover-color: fnColor(0) !default;
+$a-btn-succes-outline-active-background: fnColor(5) !default;
+$a-btn-succes-outline-active-border: fnColor(5) !default;
+$a-btn-succes-outline-active-color: fnColor(0) !default;
+
+$a-btn-primary-dark-background-color: fnColor(2) !default;
+$a-btn-primary-dark-border-color: fnColor(2) !default;
+$a-btn-primary-dark-color: fnColor(4) !default;
+$a-btn-primary-dark-hover-background: fnColor(0) !default;
+$a-btn-primary-dark-hover-border: fnColor(0) !default;
+$a-btn-primary-dark-hover-color: fnColor(4) !default;
+$a-btn-primary-dark-active-background: fnColor(9) !default;
+$a-btn-primary-dark-active-border: fnColor(9) !default;
+$a-btn-primary-dark-active-color: fnColor(4) !default;
+
+$a-btn-secondary-dark-background-color: transparent !default;
+$a-btn-secondary-dark-border-color: currentColor !default;
+$a-btn-secondary-dark-color: currentColor !default;
+$a-btn-secondary-dark-hover-background: fnColor(0) !default;
+$a-btn-secondary-dark-hover-border: fnColor(0) !default;
+$a-btn-secondary-dark-hover-color: fnColor(4) !default;
+$a-btn-secondary-dark-active-background: fnColor(9) !default;
+$a-btn-secondary-dark-active-border: fnColor(9) !default;
+$a-btn-secondary-dark-active-color: fnColor(4) !default;
+
+$a-btn-primary-outline-dark-background-color: transparent !default;
+$a-btn-primary-outline-dark-border-color: fnColor(2) !default;
+$a-btn-primary-outline-dark-color: fnColor(2) !default;
+$a-btn-primary-outline-dark-hover-background: fnColor(0) !default;
+$a-btn-primary-outline-dark-hover-border: fnColor(0) !default;
+$a-btn-primary-outline-dark-hover-color: fnColor(4) !default;
+$a-btn-primary-outline-dark-active-background: fnColor(9) !default;
+$a-btn-primary-outline-dark-active-border: fnColor(9) !default;
+$a-btn-primary-outline-dark-active-color: fnColor(4) !default;
+
+$a-btn-succes-outline-dark-background-color: transparent !default;
+$a-btn-succes-outline-dark-border-color: fnColor(10) !default;
+$a-btn-succes-outline-dark-color: fnColor(10) !default;
+$a-btn-succes-outline-dark-hover-background: fnColor(0) !default;
+$a-btn-succes-outline-dark-hover-border: fnColor(0) !default;
+$a-btn-succes-outline-dark-hover-color: fnColor(4) !default;
+$a-btn-succes-outline-dark-active-background: fnColor(9) !default;
+$a-btn-succes-outline-dark-active-border: fnColor(9) !default;
+$a-btn-succes-outline-dark-active-color: fnColor(4) !default;
+
+$a-btn-dark-background-color: fnColor(4) !default;
+$a-btn-dark-border-color: fnColor(4) !default;
+$a-btn-dark-color: fnColor(0) !default;
+$a-btn-dark-hover-background: fnColor(0) !default;
+$a-btn-dark-hover-border: fnColor(0) !default;
+$a-btn-dark-hover-color: fnColor(4) !default;
+$a-btn-dark-active-background: fnColor(9) !default;
+$a-btn-dark-active-border: fnColor(9) !default;
+$a-btn-dark-active-color: fnColor(4) !default;
+
+// 10 atoms / anchors
+$a-link-font-weight: null !default;
+
+// 10 atoms / form-elements
+$a-form-error-bg: rgba(255, 255, 255, .5) !default;
+$a-form-error-text: $color-danger !default;
+
+$a-form-pill-font-weight: null !default;
+$a-form-pill-border: null !default;
+$a-form-pill-background-color-checked: fnColor(2) !default;
+$a-form-pill-background-color-hover: #000 !default;
+$a-form-pill-color-checked: #000 !default;
+$a-form-pill-color-hover: #fff !default;
+
+// 20 molecules / form
+$m-form-row-separator-border: 1px solid fnColor(9) !default;
+$m-form-box-indent-border: 1px solid #fff !default;
+
+// 20 molecules / modal
+$m-modal-h4-background-color: fnColor(9) !default;
+
+// 20 molecules / table
+$m-table-small-opacity: .5 !default;
+$m-table-th-color: null !default;
+$m-table-footer-color: null !default;
+/* stylelint-disable indentation, function-parentheses-space-inside */
+$m-table-footer-separator-line: linear-gradient(
+  to bottom,
+  transparent,
+  transparent 15px,
+  currentColor 15px,
+  currentColor 16px,
+  transparent 16px) !default;
+/* stylelint-enable */
+$m-table-footer-dark-separator-line: null !default;
+
+// 30 organisms / stepped-form
+$o-stepped-form-box-shadow: null !default;
+$o-stepped-form-header-border-color: rgba(map-get($colors, 7), .6) !default;
+$o-stepped-form-header-disabled-border-color: fnColor(8) !default;

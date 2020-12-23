@@ -1,0 +1,9 @@
+.a-form-read {
+  min-height: 38px;
+
+  &.m-form__cell--M300 {
+    @include mq('M') {
+      padding-top: 9px;
+    }
+  }
+}

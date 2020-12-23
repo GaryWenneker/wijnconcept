@@ -1,0 +1,165 @@
+
+
+// Get a real font weight value
+// For example: 'black' should return 900.
+
+// Reference:
+// 100: thin, hairline
+// 200 extra light, ultra light
+// 300 light
+// 400 normal, regular, book
+// 500 medium
+// 600 semibold, demibold
+// 700 bold
+// 800 extrabold, ultrabold
+// 900 black, heavy
+
+$generic-font-weight-mapping: (
+  ultralight: (weight: 100, style: normal),
+  extralight: (weight: 200, style: normal),
+  light: (weight: 300, style: normal),
+  light-italic: (weight: 300, style: italic),
+  regular: (weight: 400, style: normal),
+  italic: (weight: 400, style: italic),
+  demibold: (weight: 600, style: normal),
+  semibold: (weight: 600, style: normal),
+  bold: (weight: 700, style: normal),
+  extrabold: (weight: 800, style: normal), 
+  black: (weight: 900, style: normal),
+  heavy: (weight: 900, style: normal),
+);
+
+@function get-font-weight($font-weight, $font-weight-map: $generic-font-weight-mapping) {
+
+  $font-weight-mapped: '';
+
+  // Convert possible 'normal' font-weight strings to 'regular', which is the font's actual weight name
+  @if ($font-weight == null or $font-weight == 'normal') {
+    $font-weight: 'regular';
+  }
+
+  // Look up the actual weight
+  /* stylelint-disable-next-line order/order */
+  $mapped-weight: map-get($font-weight-map, $font-weight);
+  $mapped-value-weight: map-get($mapped-weight, 'weight');
+
+  @if ($mapped-value-weight) {
+    $font-weight-mapped: $mapped-value-weight;
+  } @else {
+    $font-weight-mapped: $font-weight;
+  }
+
+  @return $font-weight-mapped;
+}
+
+// for ease of use with $colors:
+// but doesn't work in color functions
+// so simple use is:
+//    color: fnColor(4);
+// but that won't work here:
+//    color: transparentize(map-get($colors,4),.5);
+@function fnColor($var) {
+  @return map-get($colors,$var);
+}
+
+@function fnThemeDefault($var) {
+  @return map-get($theme-default, '#{$var}');
+}
+
+@function fnThemeDark($var) {
+  @return map-get($theme-dark, '#{$var}');
+}
+
+@function fnThemeMedium($var) {
+  @return map-get($theme-medium, '#{$var}');
+}
+
+@function fnThemeLight($var) {
+  @return map-get($theme-light, '#{$var}');
+}
+
+@function fnThemeAltLight($var) {
+  @return map-get($theme-alt-light, '#{$var}');
+}
+
+@function fnThemeAltDark($var) {
+  @return map-get($theme-alt-dark, '#{$var}');
+}
+
+@function fnThemeSucces($var) {
+  @return map-get($theme-succes, '#{$var}');
+}
+
+@function fnThemeWarning($var) {
+  @return map-get($theme-warning, '#{$var}');
+}
+
+@function fnThemeDanger($var) {
+  @return map-get($theme-danger, '#{$var}');
+}
+
+@function fnThemeInfo($var) {
+  @return map-get($theme-info, '#{$var}');
+}
+
+// px to em
+//
+// font-size: em(18);
+// font-size: em(18px);
+//
+@function em($pixels, $context: $base-fontsize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1em;
+}
+// px to rem
+//
+// font-size: rem(24);
+// font-size: rem(24px);
+//
+@function rem($pixels) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @return $pixels / $base-fontsize * 1rem;
+}
+// strip unit
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+//  replace characters in a string, used by svg-url($svg)
+//
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+// generate UTF-8 encoded data uri for using inline svg in sass
+//
+// background-image: svg-url('<svg>...</svg>');
+//
+@function svg-url($svg) {
+  // Chunk up string in order to avoid
+  // "SystemStackError: stack level too deep"
+  $encoded: '';
+  $slice: 2000;
+  $index: 0;
+  $loops: ceil(str-length($svg)/$slice);
+  @for $i from 1 through $loops {
+    $chunk: str-slice($svg, $index, $index + $slice - 1);
+    $chunk: str-replace($chunk, '"', '\'');
+    $chunk: str-replace($chunk, '<', '%3C');
+    $chunk: str-replace($chunk, '>', '%3E');
+    $chunk: str-replace($chunk, '&', '%26');
+    $chunk: str-replace($chunk, '#', '%23');
+    $encoded: #{$encoded}#{$chunk};
+    $index: $index + $slice;
+  }
+  @return url('data:image/svg+xml;charset=utf8,#{$encoded}');
+}

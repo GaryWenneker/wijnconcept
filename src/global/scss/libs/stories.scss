@@ -1,0 +1,239 @@
+@charset 'utf-8';
+
+@import '01_tools/mixins/utils';
+@import '02_settings/fonts';
+@import '02_settings/variables';
+
+html {
+  overflow-y: scroll; // this should be default in all 11 dimensions
+}
+
+body {
+  height: initial; // don't mess with what's golden (talkin' to you, Fabrique)
+  min-height: 100%; // (to get what Fabrique really wanted)
+  background-color: #fff;
+}
+
+body, .sb-show-main {
+  padding: 0;
+}
+
+.sb-grid--highlight {
+  &.m-grid {
+    background-color: #f8f8f8;
+
+    [class*='m-grid__']:empty {
+      background-color: rgb(228, 228, 228);
+    }
+  }
+
+  .placeholder__container {
+    min-height: 50px;
+    border: 1px solid transparent;
+    background: transparent url('../../../images/EmptyPlaceholderBg.png') repeat;
+    /* stylelint-disable-next-line declaration-no-important */
+    background-color: rgb(179, 208, 253) !important;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #a5a5a5;
+      /* stylelint-disable-next-line declaration-no-important */
+      background-color: rgb(159, 197, 255) !important;
+    }
+
+    code {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  .content {
+    padding: 10px;
+  }
+}
+
+.sb-breakout {
+  min-height: 100vh;
+  margin: -20px;
+}
+
+/* max content width for ONVZ is 628px */
+.sb-maxwidth {
+  padding-right: 0;
+  padding-left: 0;
+
+  @include mq('M') { 
+    padding-right: calc(50% - 314px);
+    padding-left: calc(50% - 314px);
+  }
+}
+
+.sb-fillheight {
+  min-height: calc(100vh - 76px);  /* 76px is title + padding */
+  padding-top: 30px;
+  padding-bottom: 30px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+}
+
+.sb-title {
+  margin: 0;
+  padding: 20px 30px;
+  font-weight: bold;
+  font-size: 24px;
+
+  &.sb-maxwidth {
+    padding: 20px;
+
+    @include mq('S') {
+      padding: 20px 40px;
+    }
+
+    @include mq('M') { 
+      padding-right: calc(50% - 314px);
+      padding-left: calc(50% - 314px);
+    }
+  }
+}
+
+.sb-squares {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  
+  > li {
+    display: flex;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 125px;
+    border: 1px solid rgba(0, 0, 0, .2);
+  }
+
+  &--icons {
+    div {
+      flex-direction: column;
+      justify-content: stretch;
+      width: 100px;
+      height: 100px;
+      padding: 10px 5px;
+      border-radius: 4px;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .a-icon {
+      display: inline-flex;
+      flex-grow: 1;
+      align-items: center;
+
+      &::before {
+        font-size: 40px;
+      }
+    }
+
+    p {
+      flex-shrink: 1;
+      margin: 5px 0 0;
+      font-size: 12px;
+      line-height: 1.1;
+      text-align: center;
+    }
+  }
+
+  // used with buttons
+  &--bigclear {
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 0;
+
+    > li {
+      min-width: 40%;
+      padding: 15px 0;
+    }
+  }
+}
+
+.sb-singleline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sb-table {
+  width: 100%;
+  margin-top: 30px;
+  border: 1px solid #555048;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-top: 0;
+  font-size: 14px;
+
+  caption, th, td {
+    vertical-align: top;
+    padding: 5px 20px;
+    border-bottom: 0;
+    font-weight: normal;
+    text-align: left;
+  }
+
+  caption, th {
+    padding-top: 0;
+    background-color: #555048;
+    color: #fff;
+    font-size: 12px;
+  }
+
+  caption {
+    padding-top: 4px;
+    padding-bottom: 3px;
+    color: #f5f3ee;
+    font-weight: bold;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+
+  td {
+    background-color: #fff;
+  }
+  
+  tr:nth-child(even) td {
+    background-color: #f6f6f6;
+  }
+}
+
+.sb-data {
+  padding: 30px 0 0;
+
+  code {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555048;
+    background: #f6f6f6;
+    font-size: 14px;
+  }
+
+  .sb-table {
+    margin-top: 0;
+  }
+}
+
+.sb-bigoutline {
+  outline: 14px solid rgba(255, 0, 0, .08);
+}
+
+.sb-shadow {
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, .2);
+}

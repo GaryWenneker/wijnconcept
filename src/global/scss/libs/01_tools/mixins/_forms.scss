@@ -1,0 +1,50 @@
+@mixin h-form-field($background: #f6f6f6, $color-text: #4c5356) {
+  @include h-transition-form-field;
+  width: 100%;
+  padding-right: 30px;
+  padding-left: 14px;
+  border: solid 1px #333;
+  background-color: $background;
+  color: $color-text;
+  outline: none;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: $base-fontsize;
+  font-family: $default-font;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+
+  &::placeholder.error {
+    color: $color-danger;
+  }
+}
+
+@mixin h-form-field--input {
+  height: 38px;
+
+  &[type='number'] {
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -moz-appearance: textfield;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -webkit-appearance: none;
+  }
+}
+
+@mixin h-form-field--search {
+  @include h-form-field--input;
+}
+
+@mixin h-form-field--select {
+  height: 38px;
+}
+
+@mixin h-form-field--textarea {
+  padding-top: map-get($spacings, 2);
+  padding-bottom: map-get($spacings, 2);
+}

@@ -1,0 +1,18 @@
+.t-single-column-tight {
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include mq('S') {
+    padding: 0 40px;
+  }
+
+  @include mq('M') {
+    padding: 0 30px;
+  }
+
+  > .m-grid__M12.m-grid__L12 {
+    max-width: 627px;
+    margin: 0;
+    padding: 0;
+  }
+}

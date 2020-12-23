@@ -1,0 +1,256 @@
+@charset "UTF-8";
+/**
+* Media query mixin.
+*
+* It’s not great practice to define solid breakpoints up-front, preferring to
+* modify your design when it needs it, rather than assuming you’ll want a
+* change at ‘mobile’. As such, this is primarely to be used by the default grid
+* that is used for general page layout
+*
+* We define some broad $breakpoints in our vars file that are picked up here
+* for use in a simple media query mixin. Our options are:
+*
+* mobile-first:
+*
+* S
+* M
+* L
+*
+* desktop-first:
+*
+* S-max
+* M-max
+* L-max
+*
+* Not using a media query will, naturally, serve styles to all devices.
+*
+*	@include mq(L){
+*		[styles here]
+*	}
+*
+*/
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Playfair+Display:wght@700&display=swap");
+/* stylelint-disable-next-line order/order */
+@font-face {
+  font-weight: 200;
+  font-style: normal;
+  font-size-adjust: initial;
+  font-family: "Merriweather";
+  src: url("/static/fonts/Merriweather/Merriweather-v5-latin-200.woff2") format("woff2"), url("/static/fonts/Merriweather/Merriweather-v5-latin-200.woff") format("woff");
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "calt" 0; }
+
+/* stylelint-disable-next-line order/order */
+@font-face {
+  font-weight: 300;
+  font-style: normal;
+  font-size-adjust: initial;
+  font-family: "Merriweather";
+  src: url("/static/fonts/Merriweather/Merriweather-v5-latin-300.woff2") format("woff2"), url("/static/fonts/Merriweather/Merriweather-v5-latin-300.woff") format("woff");
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "calt" 0; }
+
+/* stylelint-disable-next-line order/order */
+@font-face {
+  font-weight: 700;
+  font-style: normal;
+  font-size-adjust: initial;
+  font-family: "Merriweather";
+  src: url("/static/fonts/Merriweather/Merriweather-v5-latin-700.woff2") format("woff2"), url("/static/fonts/Merriweather/Merriweather-v5-latin-700.woff") format("woff");
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "calt" 0; }
+
+html {
+  overflow-y: scroll; }
+
+body {
+  height: initial;
+  min-height: 100%;
+  background-color: #fff; }
+
+body, .sb-show-main {
+  padding: 0; }
+
+.sb-grid--highlight.m-grid {
+  background-color: #f8f8f8; }
+
+.sb-grid--highlight.m-grid [class*='m-grid__']:empty {
+  background-color: #e4e4e4; }
+
+.sb-grid--highlight .placeholder__container {
+  min-height: 50px;
+  border: 1px solid transparent;
+  background: transparent url("../../../images/EmptyPlaceholderBg.png") repeat;
+  /* stylelint-disable-next-line declaration-no-important */
+  background-color: #b3d0fd !important;
+  cursor: pointer; }
+
+.sb-grid--highlight .placeholder__container:hover {
+  border: 1px solid #a5a5a5;
+  /* stylelint-disable-next-line declaration-no-important */
+  background-color: #9fc5ff !important; }
+
+.sb-grid--highlight .placeholder__container code {
+  display: none;
+  visibility: hidden; }
+
+.sb-grid--highlight .content {
+  padding: 10px; }
+
+.sb-breakout {
+  min-height: 100vh;
+  margin: -20px; }
+
+/* max content width for ONVZ is 628px */
+.sb-maxwidth {
+  padding-right: 0;
+  padding-left: 0; }
+
+@media only screen and (min-width: 800px) {
+  .sb-maxwidth {
+    padding-right: calc(50% - 314px);
+    padding-left: calc(50% - 314px); } }
+
+.sb-fillheight {
+  min-height: calc(100vh - 76px);
+  /* 76px is title + padding */
+  padding-top: 30px;
+  padding-bottom: 30px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); }
+
+.sb-title {
+  margin: 0;
+  padding: 20px 30px;
+  font-weight: bold;
+  font-size: 24px; }
+
+.sb-title.sb-maxwidth {
+  padding: 20px; }
+
+@media only screen and (min-width: 530px) {
+  .sb-title.sb-maxwidth {
+    padding: 20px 40px; } }
+
+@media only screen and (min-width: 800px) {
+  .sb-title.sb-maxwidth {
+    padding-right: calc(50% - 314px);
+    padding-left: calc(50% - 314px); } }
+
+.sb-squares {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 10px;
+  list-style: none; }
+
+.sb-squares > li {
+  display: flex;
+  margin: 0;
+  padding: 10px; }
+
+.sb-squares div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 125px;
+  border: 1px solid rgba(0, 0, 0, 0.2); }
+
+.sb-squares--icons div {
+  flex-direction: column;
+  justify-content: stretch;
+  width: 100px;
+  height: 100px;
+  padding: 10px 5px;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #000; }
+
+.sb-squares--icons .a-icon {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center; }
+
+.sb-squares--icons .a-icon::before {
+  font-size: 40px; }
+
+.sb-squares--icons p {
+  flex-shrink: 1;
+  margin: 5px 0 0;
+  font-size: 12px;
+  line-height: 1.1;
+  text-align: center; }
+
+.sb-squares--bigclear {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 0; }
+
+.sb-squares--bigclear > li {
+  min-width: 40%;
+  padding: 15px 0; }
+
+.sb-singleline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.sb-table {
+  width: 100%;
+  margin-top: 30px;
+  border: 1px solid #555048;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-top: 0;
+  font-size: 14px; }
+
+.sb-table caption, .sb-table th, .sb-table td {
+  vertical-align: top;
+  padding: 5px 20px;
+  border-bottom: 0;
+  font-weight: normal;
+  text-align: left; }
+
+.sb-table caption, .sb-table th {
+  padding-top: 0;
+  background-color: #555048;
+  color: #fff;
+  font-size: 12px; }
+
+.sb-table caption {
+  padding-top: 4px;
+  padding-bottom: 3px;
+  color: #f5f3ee;
+  font-weight: bold;
+  letter-spacing: .15em;
+  text-transform: uppercase; }
+
+.sb-table td {
+  background-color: #fff; }
+
+.sb-table tr:nth-child(even) td {
+  background-color: #f6f6f6; }
+
+.sb-data {
+  padding: 30px 0 0; }
+
+.sb-data code {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #555048;
+  background: #f6f6f6;
+  font-size: 14px; }
+
+.sb-data .sb-table {
+  margin-top: 0; }
+
+.sb-bigoutline {
+  outline: 14px solid rgba(255, 0, 0, 0.08); }
+
+.sb-shadow {
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2); }

@@ -48,7 +48,7 @@ const AppRoot = class {
     return (h(Host, null, h("app-header", { class: "sticky", user: user, signOut: this.signOut }), h("stencil-router", null, h("stencil-route-switch", { scrollTopOffset: 0 }, h("stencil-route", { url: "/", component: "home-page", exact: true, componentProps: { user } }), h("stencil-route", { url: "/profile/:username", component: "profile-page", exact: true, componentProps: { user } }), h("stencil-route", { url: "/article/:slug", component: "article-page", exact: true, componentProps: { user } }), h("stencil-route", { url: "/settings", component: isLogged ? 'settings-page' : 'not-found', exact: true, componentProps: {
         setUser: this.setUser,
         user,
-      } }), h("stencil-route", { url: ['/editor', '/editor/:slug'], component: isLogged ? 'editor-page' : 'not-found', exact: true, componentProps: { user } }), h("stencil-route", { url: ['/login', '/register'], component: isLogged ? 'not-found' : 'auth-page', componentProps: { setUser: this.setUser }, exact: true }), h("stencil-route", { component: "not-found" }))), h("app-footer", null)));
+      } }), h("stencil-route", { url: ['/editor', '/editor/:slug'], component: isLogged ? 'editor-page' : 'not-found', exact: true, componentProps: { user } }), h("stencil-route", { url: ['/login', '/register'], component: isLogged ? 'not-found' : 'auth-page', componentProps: { setUser: this.setUser }, exact: true }), h("stencil-route", { component: "not-found" })))));
   }
 };
 

@@ -1,0 +1,38 @@
+.m-progress-steps {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  padding: 0;
+  list-style: none;
+
+  &__step {
+    flex: 1 0;
+    height: 7px;
+    margin: 0 1px;
+    background-color: fnColor(8);
+    transition: background-color .24s cubic-bezier(.68, -.55, .265, 1.55);
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .is-complete > & {
+      background-color: $color-succes;
+    }
+
+    &.is-active,
+        
+    &.is-valid {
+      background-color: $color-brand;
+
+      .is-complete > & {
+        background-color: $color-succes;
+      }
+    }
+  }
+}
