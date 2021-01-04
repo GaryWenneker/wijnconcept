@@ -1,6 +1,6 @@
-import { r as registerInstance, h } from './index-a8e04894.js';
+import { r as registerInstance, h } from './index-81f7b2f5.js';
 import './utils-54e66ad4.js';
-import { u as updateUser } from './auth-093463f1.js';
+import { u as updateUser } from './auth-7efe28eb.js';
 
 const inputFields = [
   { id: 'image', placeholder: 'URL of profile picture', type: 'text' },

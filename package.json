@@ -21,6 +21,7 @@
     "prod": "stencil build --prod",
     "start": "run-p start:*",
     "start:stencil": "stencil build --dev --watch --serve",
+    "sstart:storybook": "run-p storybook",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",

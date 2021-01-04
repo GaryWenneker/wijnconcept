@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-a8e04894.js';
+import { r as registerInstance, h } from './index-81f7b2f5.js';
 import { s as standardReq } from './utils-54e66ad4.js';
 
 const getTags = async () => {

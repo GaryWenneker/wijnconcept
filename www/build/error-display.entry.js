@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-a8e04894.js';
+import { r as registerInstance, h } from './index-81f7b2f5.js';
 
 const ErrorDisplay = class {
   constructor(hostRef) {

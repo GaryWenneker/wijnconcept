@@ -17,19 +17,19 @@ export class Header {
             <div class="m-flex-columns__col o-header-bottom__col">
               <ul class="m-primary-navigation">
                 <li class="m-primary-navigation__item ">
-                  <a href="#">Hoe werkt het?</a>
+                <stencil-route-link url="/">Hoe werkt het?</stencil-route-link>
                 </li>
                 <li class="m-primary-navigation__item ">
-                  <a href="#">Voordelen</a>
+                <stencil-route-link url="/">Voordelen</stencil-route-link>
                 </li>
                 <li class="m-primary-navigation__item ">
                   LOGO
                 </li>
                 <li class="m-primary-navigation__item ">
-                  <a href="#">Onze wijnhuizen</a>
+                  <stencil-route-link url="/about">Onze wijnhuizen</stencil-route-link>
                 </li>
                 <li class="m-primary-navigation__item ">
-                  <a href="#">FAQ</a>
+                  <stencil-route-link url="/layout">FAQ</stencil-route-link>
                 </li>
               </ul>
 

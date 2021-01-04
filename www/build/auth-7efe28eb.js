@@ -43,4 +43,4 @@ const updateUser = async (user, token) => {
   return handleUserReturn(userInfo);
 };
 
-export { getUser as g, logUser as l, registerUser as r, updateUser as u };
+export { logUser as l, registerUser as r, updateUser as u };

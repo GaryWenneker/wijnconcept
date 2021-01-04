@@ -1,4 +1,4 @@
-import { r as registerInstance } from './index-a8e04894.js';
+import { r as registerInstance } from './index-81f7b2f5.js';
 
 const NotFound = class {
   constructor(hostRef) {

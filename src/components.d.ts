@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IUser, TSignOut } from "./api/auth";
 import { IArticle } from "./api/articles";
 import { IAPIErrors } from "./api/utils";
-import { MatchResults, RouterHistory } from "@stencil/router";
+import { LocationSegments, MatchResults, RouteRenderProps, RouterHistory } from "@stencil/router";
 import { IComment } from "./api/comments";
 import { TTabTypes } from "./components/types";
 import { IProfile } from "./api/profiles";
@@ -18,8 +18,6 @@ export namespace Components {
     interface AppHeader {
         "signOut": TSignOut;
         "user"?: IUser;
-    }
-    interface AppRoot {
     }
     interface ArticleList {
         "errors": IAPIErrors;
@@ -59,11 +57,20 @@ export namespace Components {
         "poster": string;
         "src": string;
     }
-    interface HomePage {
-        "user"?: IUser;
-    }
     interface HomeTags {
         "setTag": (tag: string) => void;
+    }
+    interface IpAppAbout {
+    }
+    interface IpAppHome {
+    }
+    interface IpAppRoot {
+    }
+    interface IpStencilRouteListener {
+        "props": RouteRenderProps | undefined;
+    }
+    interface LayoutPage {
+        "user"?: IUser;
     }
     interface LoadingSpinner {
     }
@@ -105,12 +112,6 @@ declare global {
     var HTMLAppHeaderElement: {
         prototype: HTMLAppHeaderElement;
         new (): HTMLAppHeaderElement;
-    };
-    interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
-    }
-    var HTMLAppRootElement: {
-        prototype: HTMLAppRootElement;
-        new (): HTMLAppRootElement;
     };
     interface HTMLArticleListElement extends Components.ArticleList, HTMLStencilElement {
     }
@@ -160,17 +161,41 @@ declare global {
         prototype: HTMLGlBackgroundVideoElement;
         new (): HTMLGlBackgroundVideoElement;
     };
-    interface HTMLHomePageElement extends Components.HomePage, HTMLStencilElement {
-    }
-    var HTMLHomePageElement: {
-        prototype: HTMLHomePageElement;
-        new (): HTMLHomePageElement;
-    };
     interface HTMLHomeTagsElement extends Components.HomeTags, HTMLStencilElement {
     }
     var HTMLHomeTagsElement: {
         prototype: HTMLHomeTagsElement;
         new (): HTMLHomeTagsElement;
+    };
+    interface HTMLIpAppAboutElement extends Components.IpAppAbout, HTMLStencilElement {
+    }
+    var HTMLIpAppAboutElement: {
+        prototype: HTMLIpAppAboutElement;
+        new (): HTMLIpAppAboutElement;
+    };
+    interface HTMLIpAppHomeElement extends Components.IpAppHome, HTMLStencilElement {
+    }
+    var HTMLIpAppHomeElement: {
+        prototype: HTMLIpAppHomeElement;
+        new (): HTMLIpAppHomeElement;
+    };
+    interface HTMLIpAppRootElement extends Components.IpAppRoot, HTMLStencilElement {
+    }
+    var HTMLIpAppRootElement: {
+        prototype: HTMLIpAppRootElement;
+        new (): HTMLIpAppRootElement;
+    };
+    interface HTMLIpStencilRouteListenerElement extends Components.IpStencilRouteListener, HTMLStencilElement {
+    }
+    var HTMLIpStencilRouteListenerElement: {
+        prototype: HTMLIpStencilRouteListenerElement;
+        new (): HTMLIpStencilRouteListenerElement;
+    };
+    interface HTMLLayoutPageElement extends Components.LayoutPage, HTMLStencilElement {
+    }
+    var HTMLLayoutPageElement: {
+        prototype: HTMLLayoutPageElement;
+        new (): HTMLLayoutPageElement;
     };
     interface HTMLLoadingSpinnerElement extends Components.LoadingSpinner, HTMLStencilElement {
     }
@@ -211,7 +236,6 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-footer": HTMLAppFooterElement;
         "app-header": HTMLAppHeaderElement;
-        "app-root": HTMLAppRootElement;
         "article-list": HTMLArticleListElement;
         "article-meta": HTMLArticleMetaElement;
         "article-page": HTMLArticlePageElement;
@@ -220,8 +244,12 @@ declare global {
         "editor-page": HTMLEditorPageElement;
         "error-display": HTMLErrorDisplayElement;
         "gl-background-video": HTMLGlBackgroundVideoElement;
-        "home-page": HTMLHomePageElement;
         "home-tags": HTMLHomeTagsElement;
+        "ip-app-about": HTMLIpAppAboutElement;
+        "ip-app-home": HTMLIpAppHomeElement;
+        "ip-app-root": HTMLIpAppRootElement;
+        "ip-stencil-route-listener": HTMLIpStencilRouteListenerElement;
+        "layout-page": HTMLLayoutPageElement;
         "loading-spinner": HTMLLoadingSpinnerElement;
         "not-found": HTMLNotFoundElement;
         "profile-page": HTMLProfilePageElement;
@@ -236,8 +264,6 @@ declare namespace LocalJSX {
     interface AppHeader {
         "signOut"?: TSignOut;
         "user"?: IUser;
-    }
-    interface AppRoot {
     }
     interface ArticleList {
         "errors"?: IAPIErrors;
@@ -277,11 +303,22 @@ declare namespace LocalJSX {
         "poster"?: string;
         "src"?: string;
     }
-    interface HomePage {
-        "user"?: IUser;
-    }
     interface HomeTags {
         "setTag"?: (tag: string) => void;
+    }
+    interface IpAppAbout {
+    }
+    interface IpAppHome {
+    }
+    interface IpAppRoot {
+    }
+    interface IpStencilRouteListener {
+        "onPageEnter"?: (event: CustomEvent<LocationSegments>) => void;
+        "onPageLeave"?: (event: CustomEvent<LocationSegments>) => void;
+        "props"?: RouteRenderProps | undefined;
+    }
+    interface LayoutPage {
+        "user"?: IUser;
     }
     interface LoadingSpinner {
     }
@@ -313,7 +350,6 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-footer": AppFooter;
         "app-header": AppHeader;
-        "app-root": AppRoot;
         "article-list": ArticleList;
         "article-meta": ArticleMeta;
         "article-page": ArticlePage;
@@ -322,8 +358,12 @@ declare namespace LocalJSX {
         "editor-page": EditorPage;
         "error-display": ErrorDisplay;
         "gl-background-video": GlBackgroundVideo;
-        "home-page": HomePage;
         "home-tags": HomeTags;
+        "ip-app-about": IpAppAbout;
+        "ip-app-home": IpAppHome;
+        "ip-app-root": IpAppRoot;
+        "ip-stencil-route-listener": IpStencilRouteListener;
+        "layout-page": LayoutPage;
         "loading-spinner": LoadingSpinner;
         "not-found": NotFound;
         "profile-page": ProfilePage;
@@ -338,7 +378,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-footer": LocalJSX.AppFooter & JSXBase.HTMLAttributes<HTMLAppFooterElement>;
             "app-header": LocalJSX.AppHeader & JSXBase.HTMLAttributes<HTMLAppHeaderElement>;
-            "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "article-list": LocalJSX.ArticleList & JSXBase.HTMLAttributes<HTMLArticleListElement>;
             "article-meta": LocalJSX.ArticleMeta & JSXBase.HTMLAttributes<HTMLArticleMetaElement>;
             "article-page": LocalJSX.ArticlePage & JSXBase.HTMLAttributes<HTMLArticlePageElement>;
@@ -347,8 +386,12 @@ declare module "@stencil/core" {
             "editor-page": LocalJSX.EditorPage & JSXBase.HTMLAttributes<HTMLEditorPageElement>;
             "error-display": LocalJSX.ErrorDisplay & JSXBase.HTMLAttributes<HTMLErrorDisplayElement>;
             "gl-background-video": LocalJSX.GlBackgroundVideo & JSXBase.HTMLAttributes<HTMLGlBackgroundVideoElement>;
-            "home-page": LocalJSX.HomePage & JSXBase.HTMLAttributes<HTMLHomePageElement>;
             "home-tags": LocalJSX.HomeTags & JSXBase.HTMLAttributes<HTMLHomeTagsElement>;
+            "ip-app-about": LocalJSX.IpAppAbout & JSXBase.HTMLAttributes<HTMLIpAppAboutElement>;
+            "ip-app-home": LocalJSX.IpAppHome & JSXBase.HTMLAttributes<HTMLIpAppHomeElement>;
+            "ip-app-root": LocalJSX.IpAppRoot & JSXBase.HTMLAttributes<HTMLIpAppRootElement>;
+            "ip-stencil-route-listener": LocalJSX.IpStencilRouteListener & JSXBase.HTMLAttributes<HTMLIpStencilRouteListenerElement>;
+            "layout-page": LocalJSX.LayoutPage & JSXBase.HTMLAttributes<HTMLLayoutPageElement>;
             "loading-spinner": LocalJSX.LoadingSpinner & JSXBase.HTMLAttributes<HTMLLoadingSpinnerElement>;
             "not-found": LocalJSX.NotFound & JSXBase.HTMLAttributes<HTMLNotFoundElement>;
             "profile-page": LocalJSX.ProfilePage & JSXBase.HTMLAttributes<HTMLProfilePageElement>;

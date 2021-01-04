@@ -28,7 +28,7 @@ body {
   color: $color-text;
 
   // avoid troubles w integrated browser in app
-  &:not(.is-onvz-app) {
+  &:not(.is-wijnloft-app) {
     overflow-y: scroll;
   }
 }

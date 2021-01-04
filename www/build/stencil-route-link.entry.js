@@ -1,5 +1,5 @@
-import { r as registerInstance, h, g as getElement } from './index-a8e04894.js';
-import { A as ActiveRouter } from './active-router-c0e7430c.js';
+import { r as registerInstance, h, g as getElement } from './index-81f7b2f5.js';
+import { A as ActiveRouter } from './active-router-f6ab37ed.js';
 import { m as matchPath } from './match-path-760e1797.js';
 import './location-utils-fea12957.js';
 import { d as isModifiedEvent } from './dom-utils-8e73e88b.js';

@@ -1,87 +1,49 @@
-import '@stencil/router';
+import { Component, Listen, State, h } from '@stencil/core';
 
-import { Component, Host, State, h } from '@stencil/core';
-import { IUser, getUser } from './api/auth';
-
-import { IAPIErrors } from './api/utils';
+import { LocationSegments } from '@stencil/router';
 
 @Component({
-  tag: 'app-root',
+  tag: 'ip-app-root'
 })
-export class AppRoot {
-  @State() user: IUser;
-  @State() errors?: IAPIErrors;
+export class IpAppRoot {
+  @State()
+  pageState: string[] = [];
 
-  setUser = (user: IUser) => {
-    this.user = user;
-    localStorage.setItem('user', JSON.stringify(user));
-  };
-
-  signOut = () => {
-    localStorage.removeItem('user');
-    this.user = undefined;
-  };
-
-  getUser = async () => {
-    if (!this.user || !this.user.token) {
-      return;
-    }
-    const res = await getUser(this.user.token);
-    if (res.success) {
-      this.user = res.user;
-      localStorage.setItem('user', JSON.stringify(res.user));
-    } else {
-      this.errors = res.errors;
-      // When we fail to get a user, this could mean their token has expired, // so, as a guarantee, we sign them out
-      this.signOut();
-    }
-  };
-
-  componentWillLoad() {
-    const user = localStorage.getItem('user');
-    if (user) {
-      this.user = JSON.parse(user);
-    }
+  @Listen('pageEnter')
+  onPageEnter(e: CustomEvent<LocationSegments>) {
+    this.pageState = [...this.pageState, `Page enter ${e.detail.pathname}`];
   }
 
-  // To make sure we have the user's latest info, we fetch their profile
-  // when the app loads
-  async componentDidLoad() {
-    if (this.user && this.user.token) {
-      this.getUser();
-    }
+  @Listen('pageLeave')
+  onPageLeave(e: CustomEvent<LocationSegments>) {
+    this.pageState = [...this.pageState, `Page leave ${e.detail.pathname}`];
   }
 
   render() {
-    const { user } = this;
-    const isLogged = user && user.id ? true : false;
     return (
-      <Host>
-        <app-header class="sticky" user={user} signOut={this.signOut} />
+      <main>
         <stencil-router>
           <stencil-route-switch scrollTopOffset={0}>
-            <stencil-route url="/" component="home-page" exact={true} componentProps={{ user }} />
-            <stencil-route url="/profile/:username" component="profile-page" exact={true} componentProps={{ user }} />
-            <stencil-route url="/article/:slug" component="article-page" exact={true} componentProps={{ user }} />
-            {/* Protected routes check if logged, else render 404 */}
-            <stencil-route
-              url="/settings"
-              component={isLogged ? 'settings-page' : 'not-found'}
+          <stencil-route
+              url="/"
+              component="ip-app-home"
               exact={true}
-              componentProps={{
-                setUser: this.setUser,
-                user,
-              }}
+              routeRender={props => <ip-stencil-route-listener props={props} />}
             />
-            <stencil-route url={['/editor', '/editor/:slug']} component={isLogged ? 'editor-page' : 'not-found'} exact={true} componentProps={{ user }} />
-            {/* Visitor-only routes? check if logged, if so, render 404 */}
-            <stencil-route url={['/login', '/register']} component={isLogged ? 'not-found' : 'auth-page'} componentProps={{ setUser: this.setUser }} exact={true} />
-            {/* Catch-all 404 route */}
-            <stencil-route component="not-found" />
+            <stencil-route
+              url="/about"
+              exact={true}
+              component="ip-app-about"
+              routeRender={props => <ip-stencil-route-listener props={props} />}
+            />
           </stencil-route-switch>
         </stencil-router>
-        {/* <app-footer /> */}
-      </Host>
+        <ul>
+          {this.pageState.map(page => (
+            <li>{page}</li>
+          ))}
+        </ul>
+      </main>
     );
   }
 }

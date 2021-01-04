@@ -21,7 +21,6 @@
 
 ### Used by
 
- - [home-page](../routes/home)
  - [profile-page](../routes/profile)
 
 ### Depends on
@@ -36,7 +35,6 @@ graph TD;
   tabbed-feed --> article-list
   article-list --> error-display
   article-list --> stencil-route-link
-  home-page --> tabbed-feed
   profile-page --> tabbed-feed
   style tabbed-feed fill:#f9f,stroke:#333,stroke-width:4px
 ```
